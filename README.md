@@ -1,3 +1,8 @@
+# mean_project
+mean
+
+# modify by below:
+
 ## Welcome to the mean stack
 
 The mean stack is intended to provide a simple and fun starting point for cloud native fullstack javascript applications.   
