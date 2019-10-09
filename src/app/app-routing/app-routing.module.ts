@@ -7,11 +7,17 @@ const routes: Routes = [{
   path: '',
   component: HomeComponent
 }, {
+  path: 'home',
+  component: HomeComponent
+}, {
   path: 'auth',
   loadChildren: 'app/auth/auth.module#AuthModule'
 }, {
   path: 'admin',
   loadChildren: 'app/admin/admin.module#AdminModule'
+}, {
+  path: 'blogs',
+  loadChildren: 'app/blog/blog.module#BlogModule'
 }];
 
 @NgModule({
@@ -21,4 +27,4 @@ const routes: Routes = [{
   declarations: []
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule { }

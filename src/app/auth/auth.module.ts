@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthService } from './auth.service';
 import { TokenStorage } from './token.storage';
 import { AuthRoutingModule } from './auth-routing.module';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -15,6 +16,8 @@ import { AuthRoutingModule } from './auth-routing.module';
     CommonModule,
     SharedModule,
     AuthRoutingModule,
+    SharedModule,
+    MDBBootstrapModule.forRoot()
   ],
   declarations: [
     LoginComponent,

@@ -1,0 +1,29 @@
+<div class="container py-4">
+  <form [formGroup]='blogForm' (ngSubmit)="onSubmit()">
+    <div class="md-form">
+      <input type="text" id="form_title" class="md-textarea form-control" mdbInput formControlName='title'>
+      <label for="form_title">Input your blog title</label>
+    </div>
+    <div class="md-form">
+      <textarea type="text" id="form_content" class="md-textarea md-textarea-auto form-control" mdbInput
+        formControlName='content'></textarea>
+      <label for="form_content">Input your blog content</label>
+    </div>
+    <div class="md-form">
+      <mat-select placeholder="文章类型" formControlName='blogType' name="food">
+        <mat-option value="note">日志</mat-option>
+        <mat-option value="document">文档</mat-option>
+        <mat-option value="html">HTML</mat-option>
+      </mat-select>
+    </div>
+    <div class="md-form">
+      <img *ngIf="blogForm.value.bannerUrl" [src]="blogForm.value.bannerUrl" class="w-100 pb-4">
+      <input type="hidden" formControlName='bannerUrl'>
+      <input type="file" id="form_file" class="md-file form-control" formControlName='fileToUpload'
+        (change)="handleFileInput($event.target.files)" accept="image/*">
+      <label for="form_file"></label>
+    </div>
+    <button mdbBtn color="info" class="my-4" type="submit" [disabled]='!blogForm.valid'>Submit</button>
+    <button mdbBtn color="light" class="my-4 mx-4" type="button" (click)="goback()">Go Back</button>
+  </form>
+</div>

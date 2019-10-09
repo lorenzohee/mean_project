@@ -1,29 +1,50 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
+<mat-card class="example-card p-0">
+  <mat-card-header class="info-color white-text text-center py-4">
+    <mat-card-title>
+      <h4>
+        <strong>Sign in</strong>
+      </h4>
+    </mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <form class="example-form">
-      <table cellspacing="0">
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
+  <mat-card-content class="px-lg-5 pt-0 py-4">
+    <form class="text-center pt-4" style="color: #757575;">
+      <mat-form-field class="d-block">
+        <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+      </mat-form-field>
+      <mat-form-field class="d-block">
+        <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+      </mat-form-field>
+      <div class="d-flex justify-content-around mt-4">
+        <div>
+          <!-- Remember me -->
+          <mat-checkbox>Remember me</mat-checkbox>
+        </div>
+        <div>
+          <!-- Forgot password -->
+          <a href="">Forgot password?</a>
+        </div>
+      </div>
+      <!-- Sign in button -->
+      <button mat-button mat-raised-button color="primary" class="w-100 my-4 waves-effect z-depth-0" type="button"
+        (click)="login()">Sign in</button>
+      <!-- Register -->
+      <p>Not a member?
+        <a [routerLink]="['/auth/register']">Register</a>
+      </p>
+      <!-- Social login -->
+      <p>or sign in with:</p>
+      <a type="button" mdbBtn floating="true" color="fb" size="sm" style="font-size: 2rem" class="color-cyan-50">
+        <mdb-icon fab icon="facebook"></mdb-icon>
+      </a>
+      <a type="button" mdbBtn floating="true" color="tw" size="sm" style="font-size: 2rem">
+        <mdb-icon fab icon="twitter"></mdb-icon>
+      </a>
+      <a type="button" mdbBtn floating="true" color="li" size="sm" style="font-size: 2rem">
+        <mdb-icon fab icon="linkedin"></mdb-icon>
+      </a>
+      <a type="button" mdbBtn floating="true" color="git" size="sm" style="font-size: 2rem">
+        <mdb-icon fab icon="github"></mdb-icon>
+      </a>
     </form>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="login()" color="primary">Login</button>
-    <span>Don't have an account ? <a [routerLink]="['/auth/register']" >register</a> here</span>
-  </mat-card-actions>
 </mat-card>

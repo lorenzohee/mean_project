@@ -21,6 +21,7 @@ import {
   MatProgressBarModule,
   MatFormFieldModule,
   MatSelectModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 @NgModule({
@@ -46,6 +47,7 @@ import {
     MatFormFieldModule,
     MatSelectModule,
     FlexLayoutModule,
+    MatCheckboxModule
   ],
   exports: [
     MatToolbarModule,
@@ -68,7 +70,7 @@ import {
     MatFormFieldModule,
     MatSelectModule,
     FlexLayoutModule,
-  ],
-  declarations: [],
+    MatCheckboxModule
+  ]
 })
 export class SharedModule { }
