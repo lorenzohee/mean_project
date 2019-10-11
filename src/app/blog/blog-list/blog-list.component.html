@@ -79,6 +79,8 @@
   </section>
   <!-- Section: Blog v.4 -->
 
+  <app-pagination (OnChange)="changePage($event)" [total]="blogCount$ | async" *ngIf="blogCount$"></app-pagination>
+
 </div>
 <button mat-fab color="warn" class="scrollBtn" style="right:35px; bottom:35px;position: fixed">
   <mdb-icon fas icon="arrow-up"></mdb-icon>

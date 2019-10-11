@@ -1,5 +1,6 @@
 const Joi = require('joi');
 const Blog = require('../models/blog.model');
+const config = require('../config/config')
 
 const blogSchema = Joi.object({
   title: Joi.string().required(),
@@ -10,7 +11,7 @@ const blogSchema = Joi.object({
 
 
 module.exports = {
-  insert, index, update, destroy, detail
+  insert, index, update, destroy, detail, count
 }
 
 async function insert (blog) {
@@ -18,8 +19,21 @@ async function insert (blog) {
   return await new Blog(blog).save();
 }
 
-async function index () {
-  return await Blog.find().sort({ '_id': -1 }).limit(5);
+async function index (obj) {
+  let page = 1;
+  if (obj.page) {
+    page = obj.page;
+  }
+  let pageNum = config.paginationNum;
+  if (obj.count) {
+    return await Blog.find().count();
+  } else {
+    return await Blog.find().sort({ '_id': -1 }).skip((page - 1) * pageNum).limit(pageNum);
+  }
+}
+
+async function count (obj) {
+  return await Blog.find().sort({ '_id': -1 }).count();
 }
 
 async function detail (id) {

@@ -24,6 +24,7 @@ import {
   MatCheckboxModule
 } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     MatSelectModule,
     FlexLayoutModule,
     MatCheckboxModule,
-    MDBBootstrapModule
-  ]
+    MDBBootstrapModule,
+    PaginationComponent
+  ],
+  declarations: [PaginationComponent]
 })
 export class SharedModule { }

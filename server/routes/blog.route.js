@@ -37,7 +37,7 @@ async function detail (req, res) {
 }
 
 async function index (req, res) {
-  let blogs = await blogCtrl.index(req.body);
+  let blogs = await blogCtrl.index(req.query);
   res.json(blogs);
 }
 

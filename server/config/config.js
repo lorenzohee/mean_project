@@ -39,7 +39,8 @@ const config = {
   mongo: {
     host: envVars.MONGO_HOST,
     port: envVars.MONGO_PORT
-  }
+  },
+  paginationNum: 10
 };
 
 module.exports = config;

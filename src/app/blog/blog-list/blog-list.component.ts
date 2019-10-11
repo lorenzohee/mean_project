@@ -14,16 +14,27 @@ export class BlogListComponent implements OnInit {
 
   blogs$: Observable<Blog[]>
 
+  blogCount$: Observable<string>
+
   constructor(private blogService: BlogService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getBlogList();
+    this.getBlogCount();
   }
 
-  getBlogList() {
+  getBlogList(pageNum: number = 1) {
     this.blogs$ = this.route.paramMap.pipe(
       switchMap(params => {
-        return this.blogService.getBlogList()
+        return this.blogService.getBlogList({ page: pageNum })
+      })
+    )
+  }
+
+  getBlogCount() {
+    this.blogCount$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        return this.blogService.getBlogCount()
       })
     )
   }
@@ -34,6 +45,10 @@ export class BlogListComponent implements OnInit {
         this.getBlogList();
       })
     }
+  }
+
+  changePage(num: number) {
+    this.getBlogList(num);
   }
 
 }

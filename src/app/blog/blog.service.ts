@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Blog } from './blog';
 import { TokenStorage } from '../auth/token.storage';
@@ -20,8 +20,14 @@ export class BlogService {
     const tokenVal = this.token.getToken();
   }
 
-  getBlogList(): Observable<Blog[]> {
-    return this.httpClient.get<Blog[]>(`/api/blogs`, httpOptions);
+  getBlogList(obj): Observable<Blog[]> {
+    let params = new HttpParams().set('page', obj.page)
+    return this.httpClient.get<Blog[]>(`/api/blogs`, Object.assign({ params }, httpOptions));
+  }
+
+  getBlogCount(): Observable<string> {
+    let params = new HttpParams().set('count', 'true')
+    return this.httpClient.get<string>(`/api/blogs`, Object.assign({ params }, httpOptions));
   }
 
   getBlogById(id: string): Observable<Blog> {
