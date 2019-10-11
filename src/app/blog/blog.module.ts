@@ -6,15 +6,13 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFormComponent } from './blog-form/blog-form.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BlogTypePipe } from '../pipe/blog-type.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     BlogRoutingModule,
-    SharedModule,
-    MDBBootstrapModule.forRoot()
+    SharedModule
   ],
   providers: [BlogTypePipe],
   declarations: [BlogListComponent, BlogDetailComponent, BlogFormComponent, BlogTypePipe]

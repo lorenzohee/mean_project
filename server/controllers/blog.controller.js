@@ -19,7 +19,7 @@ async function insert (blog) {
 }
 
 async function index () {
-  return await Blog.find();
+  return await Blog.find().sort({ '_id': -1 }).limit(5);
 }
 
 async function detail (id) {

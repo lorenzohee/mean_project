@@ -23,6 +23,7 @@ import {
   MatSelectModule,
   MatCheckboxModule
 } from '@angular/material';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import {
     MatFormFieldModule,
     MatSelectModule,
     FlexLayoutModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MDBBootstrapModule.forRoot()
   ],
   exports: [
     MatToolbarModule,
@@ -70,7 +72,8 @@ import {
     MatFormFieldModule,
     MatSelectModule,
     FlexLayoutModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MDBBootstrapModule
   ]
 })
 export class SharedModule { }

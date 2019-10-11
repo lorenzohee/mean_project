@@ -1,4 +1,4 @@
-<header>
+<header id="top-section">
   <!--Navbar-->
   <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark purple lighten-1" [containerInside]="false">
     <div class="container">
@@ -30,14 +30,14 @@
               <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
             </div>
           </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">About US</a>
+          </li>
 
         </ul>
         <!-- Links -->
 
         <ul class="navbar-nav ml-auto nav-flex-icons">
-          <li class="nav-item" *ngIf="!user">
-            <a class="nav-link" [routerLink]="['/auth/login']">Login</a>
-          </li>
           <li class="nav-item" *ngIf="user">
             <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
           </li>

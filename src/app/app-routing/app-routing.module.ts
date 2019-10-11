@@ -18,6 +18,9 @@ const routes: Routes = [{
 }, {
   path: 'blogs',
   loadChildren: 'app/blog/blog.module#BlogModule'
+}, {
+  path: 'about',
+  loadChildren: 'app/about/about.module#AboutModule'
 }];
 
 @NgModule({
