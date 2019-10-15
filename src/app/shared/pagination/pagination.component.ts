@@ -9,7 +9,7 @@ export class PaginationComponent implements OnInit {
 
   private _total: number;
   private _num: number;
-  private pageList = [];
+  public pageList = [];
 
   @Input()
   set total(total: number) {
