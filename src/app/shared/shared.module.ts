@@ -25,6 +25,7 @@ import {
 } from '@angular/material';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PaginationComponent } from './pagination/pagination.component';
+import { EditorMdDirective } from './editor/editor-md.directive';
 
 @NgModule({
   imports: [
@@ -50,7 +51,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     MatSelectModule,
     FlexLayoutModule,
     MatCheckboxModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
   ],
   exports: [
     MatToolbarModule,
@@ -75,8 +76,10 @@ import { PaginationComponent } from './pagination/pagination.component';
     FlexLayoutModule,
     MatCheckboxModule,
     MDBBootstrapModule,
-    PaginationComponent
+    PaginationComponent,
+    EditorMdDirective,
   ],
-  declarations: [PaginationComponent]
+  declarations: [
+    EditorMdDirective, PaginationComponent]
 })
 export class SharedModule { }

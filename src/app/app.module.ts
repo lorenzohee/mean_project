@@ -16,6 +16,7 @@ import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HomeComponent } from './home/home.component';
     AuthModule,
     AdminModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    MarkdownModule.forRoot()
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

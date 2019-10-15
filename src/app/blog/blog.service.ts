@@ -31,7 +31,11 @@ export class BlogService {
   }
 
   getBlogById(id: string): Observable<Blog> {
-    return this.httpClient.get<Blog>(`/api/blogs/${id}`, httpOptions);
+    if (id) {
+      return this.httpClient.get<Blog>(`/api/blogs/${id}`, httpOptions);
+    } else {
+      return new Observable();
+    }
   }
 
   createBlog(form: Blog): Observable<Blog> {

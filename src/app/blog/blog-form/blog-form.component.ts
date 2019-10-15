@@ -4,6 +4,7 @@ import { BlogService } from '../blog.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
+import { EditorConfig } from '../../shared/editor/model/editor-config';
 
 @Component({
   selector: 'app-blog-form',
@@ -11,6 +12,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./blog-form.component.scss']
 })
 export class BlogFormComponent implements OnInit {
+
+  conf = new EditorConfig();
 
   blogForm = this.fb.group({
     title: ['', Validators.required],
@@ -70,5 +73,12 @@ export class BlogFormComponent implements OnInit {
 
   goback() {
     this.location.back()
+  }
+
+  //同步markdown语句
+  syncEditor(str: string): void {
+    this.blogForm.patchValue({
+      content: str
+    })
   }
 }
