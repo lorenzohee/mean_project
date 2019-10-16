@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="text-center pt-4">
+  <div class="text-center pt-4" *ngIf="user">
     <button type="button" mdbBtn color="primary" mdbWavesEffect [routerLink]="['new']">Create Blog</button>
   </div>
   <!-- Section: Blog v.4 -->
@@ -33,7 +33,7 @@
               <p>Written in <a><strong>{{(blog.blogType || '') | blogType}}</strong></a>,
                 {{blog.createdAt | date:"yyyy-MM-dd"}}</p>
               <!-- Social shares -->
-              <div class="social-counters">
+              <div class="social-counters" *ngIf="user">
                 <!-- Facebook -->
                 <a class="btn btn-fb bg-purple-400">
                   <i class="far fa-eye pr-2"></i>

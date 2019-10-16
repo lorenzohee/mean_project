@@ -5,4 +5,5 @@ export class Blog {
   createdAt: string;
   blogType: string;
   bannerUrl: string;
+  blogAccess: string;
 }

@@ -4,6 +4,7 @@ import { Blog } from '../blog';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { BlogService } from '../blog.service';
 import { switchMap } from 'rxjs/operators';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -14,13 +15,19 @@ export class BlogDetailComponent implements OnInit {
 
   blog$: Observable<Blog>;
 
+  public user: any;
+
   constructor(
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
     private blogService: BlogService
   ) { }
 
   ngOnInit() {
+    this.authService.me().subscribe(data => {
+      this.user = data.user;
+    });
     this.getBlogById()
   }
 

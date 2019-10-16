@@ -17,14 +17,12 @@ var upload = multer({ storage: storage })
 const router = express.Router();
 module.exports = router;
 
-router.use(passport.authenticate('jwt', { session: false }))
-
 router.post('/upload', passport.authenticate('jwt', { session: false }), upload.single('blogBanner'), postBanner);
 router.post('/', passport.authenticate('jwt', { session: false }), insert);
 router.get('/', index);
 router.put('/:id', passport.authenticate('jwt', { session: false }), update);
 router.get('/:id', detail);
-router.delete('/:id', destroy);
+router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy);
 
 async function insert (req, res) {
   let blog = await blogCtrl.insert(req.body);

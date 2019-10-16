@@ -5,10 +5,10 @@
       <label for="form_title">输入文章标题</label>
     </div>
     <div class="md-form">
-      <mat-select placeholder="请选择文章类型" formControlName='blogType' name="food">
+      <mat-select placeholder="请选择文章类型" formControlName='blogType'>
         <mat-option value="note">日志</mat-option>
         <mat-option value="document">文档</mat-option>
-        <mat-option value="html">HTML</mat-option>
+        <mat-option value="skill">技术</mat-option>
       </mat-select>
     </div>
     <label for="form_content">文章内容</label>
@@ -23,6 +23,12 @@
       <input type="file" id="form_file" class="md-file form-control" formControlName='fileToUpload'
         (change)="handleFileInput($event.target.files)" accept="image/*">
       <label for="form_file"></label>
+    </div>
+    <div class="md-form">
+      <mat-select placeholder="请选择隐私类型" formControlName='blogAccess'>
+        <mat-option value="public">公开</mat-option>
+        <mat-option value="private">私密</mat-option>
+      </mat-select>
     </div>
     <button mdbBtn color="info" class="my-4" type="submit" [disabled]='!blogForm.valid'>Submit</button>
     <button mdbBtn color="light" class="my-4 mx-4" type="button" (click)="goback()">Go Back</button>

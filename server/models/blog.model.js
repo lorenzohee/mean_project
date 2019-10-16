@@ -18,6 +18,10 @@ const BlogSchema = new mongoose.Schema({
   },
   bannerUrl: {
     type: String
+  },
+  blogAccess: {
+    type: String,
+    required: true
   }
 }, {
     versionKey: false

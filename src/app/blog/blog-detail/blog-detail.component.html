@@ -17,7 +17,7 @@
                 <p><strong class="text-small">{{ blog.title }}</strong> <span style="font-size: 16px"> by
                     {{(blog.blogType || '') | blogType}}</span></p>
               </a>
-              <p>
+              <p *ngIf="user">
                 <a class="btn btn-tw bg-green-400 color-white mr-4" [routerLink]="['/blogs', blog._id, 'edit']">
                   <i class="far fa-edit pr-2"></i>
                   <span class="clearfix d-none d-md-inline-block">编辑(22)</span>

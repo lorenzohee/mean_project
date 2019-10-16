@@ -20,6 +20,7 @@ export class BlogFormComponent implements OnInit {
     content: ['', Validators.required],
     blogType: ['', Validators.required],
     fileToUpload: ['', Validators.required],
+    blogAccess: ['', Validators.required],
     bannerUrl: ['']
   })
   constructor(private fb: FormBuilder, private blogService: BlogService, private router: Router, private route: ActivatedRoute, private location: Location) { }
@@ -58,6 +59,7 @@ export class BlogFormComponent implements OnInit {
         title: ['', Validators.required],
         content: ['', Validators.required],
         blogType: ['', Validators.required],
+        blogAccess: ['', Validators.required],
         fileToUpload: [''],
         bannerUrl: ['']
       })
@@ -65,6 +67,7 @@ export class BlogFormComponent implements OnInit {
         _id: res._id,
         title: res.title,
         content: res.content,
+        blogAccess: res.blogAccess,
         blogType: res.blogType,
         bannerUrl: res.bannerUrl
       })
