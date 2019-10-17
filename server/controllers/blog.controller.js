@@ -6,7 +6,8 @@ const blogSchema = Joi.object({
   title: Joi.string().required(),
   content: Joi.string().required(),
   blogType: Joi.string().required(),
-  bannerUrl: Joi.string().required()
+  bannerUrl: Joi.string().required(),
+  blogAccess: Joi.string().required()
 })
 
 
