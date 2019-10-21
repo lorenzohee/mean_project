@@ -33,5 +33,12 @@ header {
     a {
       cursor: pointer;
     }
+    img.header_banner {
+      width: 100%;
+    }
+    .nav-overwrite{
+      box-shadow: none;
+      margin-top: -70px;
+    }
   }
  

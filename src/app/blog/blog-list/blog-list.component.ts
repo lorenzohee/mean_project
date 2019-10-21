@@ -22,43 +22,36 @@ export class BlogListComponent implements OnInit {
   constructor(private authService: AuthService, private blogService: BlogService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.getBlogList();
-    this.getBlogCount();
+    this.blogs$ = this.route.queryParamMap.pipe(
+      switchMap(params => {
+        return this.blogService.getBlogList(params)
+      })
+    )
+    this.blogCount$ = this.route.queryParamMap.pipe(
+      switchMap(params => {
+        return this.blogService.getBlogCount(params)
+      })
+    )
     this.authService.me().subscribe(data => {
       this.user = data.user;
     });
   }
 
-  getBlogList(pageNum: number = 1) {
-    this.blogs$ = this.route.paramMap.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      switchMap(params => {
-        return this.blogService.getBlogList({ page: pageNum, params })
-      })
-    )
-  }
-
-  getBlogCount() {
-    this.blogCount$ = this.route.paramMap.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      switchMap(params => {
-        return this.blogService.getBlogCount()
-      })
-    )
-  }
-
   deleteBlog(id) {
     if (confirm('确认要删除此blog吗？')) {
       this.blogService.deleteBlogById(id).subscribe(res => {
-        this.getBlogList();
+        this.router.navigated = false;
+        this.router.navigate([this.router.url]);
       })
     }
   }
 
   changePage(num: number) {
-    this.getBlogList(num);
+    let params = Object.assign({}, this.route.snapshot.queryParams);
+    params.page = num;
+    this.router.navigate(['/blogs'], {
+      queryParams: params
+    });
   }
 
 }

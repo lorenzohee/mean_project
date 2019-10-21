@@ -14,8 +14,8 @@ export class BlogTypePipe implements PipeTransform {
       case 'document':
         tmp = '文档';
         break;
-      case 'html':
-        tmp = 'HTML';
+      case 'skill':
+        tmp = '技术';
         break;
       default:
         tmp = '无'

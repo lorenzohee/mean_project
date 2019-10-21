@@ -24,12 +24,15 @@ async function index (obj) {
   let page = 1;
   if (obj.page) {
     page = obj.page;
+    delete obj.page
   }
+  console.log(obj)
   let pageNum = config.paginationNum;
   if (obj.count) {
-    return await Blog.find().count();
+    delete obj.count
+    return await Blog.find(obj).count();
   } else {
-    return await Blog.find().sort({ '_id': -1 }).skip((page - 1) * pageNum).limit(pageNum);
+    return await Blog.find(obj).sort({ '_id': -1 }).skip((page - 1) * pageNum).limit(pageNum);
   }
 }
 

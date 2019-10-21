@@ -41,6 +41,7 @@ export class PaginationComponent implements OnInit {
       if (this._num > 5) {
         this.pageList = [1, 2, 3, 4, 5]
       } else {
+        this.pageList = []
         for (let i = 0; i < this._num; i++) {
           this.pageList.push(i + 1)
         }

@@ -49,29 +49,28 @@ export class BlogFormComponent implements OnInit {
   }
 
   getBlogById() {
-    this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.blogService.getBlogById(params.get('id'))
-      )
-    ).subscribe(res => {
-      this.blogForm = this.fb.group({
-        _id: [''],
-        title: ['', Validators.required],
-        content: ['', Validators.required],
-        blogType: ['', Validators.required],
-        blogAccess: ['', Validators.required],
-        fileToUpload: [''],
-        bannerUrl: ['']
+    let id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.blogService.getBlogById(id).subscribe(res => {
+        this.blogForm = this.fb.group({
+          _id: [''],
+          title: ['', Validators.required],
+          content: ['', Validators.required],
+          blogType: ['', Validators.required],
+          blogAccess: ['', Validators.required],
+          fileToUpload: [''],
+          bannerUrl: ['']
+        })
+        this.blogForm.patchValue({
+          _id: res._id,
+          title: res.title,
+          content: res.content,
+          blogAccess: res.blogAccess,
+          blogType: res.blogType,
+          bannerUrl: res.bannerUrl
+        })
       })
-      this.blogForm.patchValue({
-        _id: res._id,
-        title: res.title,
-        content: res.content,
-        blogAccess: res.blogAccess,
-        blogType: res.blogType,
-        bannerUrl: res.bannerUrl
-      })
-    })
+    }
   }
 
   goback() {

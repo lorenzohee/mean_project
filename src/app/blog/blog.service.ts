@@ -21,12 +21,12 @@ export class BlogService {
   }
 
   getBlogList(obj): Observable<Blog[]> {
-    let params = new HttpParams().set('page', obj.page)
+    let params = new HttpParams().set('page', obj.get('page') || '1').set('blogType', obj.get('blogType'))
     return this.httpClient.get<Blog[]>(`/api/blogs`, Object.assign({ params }, httpOptions));
   }
 
-  getBlogCount(): Observable<string> {
-    let params = new HttpParams().set('count', 'true')
+  getBlogCount(obj): Observable<string> {
+    let params = new HttpParams().set('count', 'true').set('blogType', obj.get('blogType'))
     return this.httpClient.get<string>(`/api/blogs`, Object.assign({ params }, httpOptions));
   }
 
