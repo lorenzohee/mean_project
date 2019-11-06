@@ -1,5 +1,5 @@
 <nav aria-label="Page navigation example">
-  <ul class="pagination pagination-circle pg-blue justify-content-center" *ngIf="pageList">
+  <ul class="pagination pagination-circle pg-blue justify-content-center" *ngIf="_num>1">
     <li class="page-item" style="font-size: 0.9rem; padding: 5px 20px;">总计{{ total }}条，第{{ icur }}/{{ _num }}页</li>
     <li class="page-item {{ (icur == 1 ) ? 'disabled' : '' }}"><a class="page-link" mdbWavesEffect
         (click)="pageListToFirst()">First</a></li>

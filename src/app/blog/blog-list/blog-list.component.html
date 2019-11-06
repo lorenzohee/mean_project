@@ -82,6 +82,7 @@
   <app-pagination (OnChange)="changePage($event)" [total]="blogCount$ | async" *ngIf="blogCount$"></app-pagination>
 
 </div>
-<button mat-fab color="warn" class="scrollBtn" style="right:35px; bottom:35px;position: fixed">
+<button mat-fab color="warn" class="scrollBtn" (click)='scrollTop()'
+  style="right:35px; bottom:35px;position: fixed; z-index: 9999">
   <mdb-icon fas icon="arrow-up"></mdb-icon>
 </button>

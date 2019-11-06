@@ -46,6 +46,10 @@ export class BlogListComponent implements OnInit {
     }
   }
 
+  scrollTop() {
+    window.scrollTo(0, 0);
+  }
+
   changePage(num: number) {
     let params = Object.assign({}, this.route.snapshot.queryParams);
     params.page = num;
