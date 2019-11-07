@@ -26,6 +26,8 @@ import {
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PaginationComponent } from './pagination/pagination.component';
 import { EditorMdDirective } from './editor/editor-md.directive';
+import { CommentComponent } from './comment/comment/comment.component';
+import { CommentItemComponent } from './comment/comment-item/comment-item.component';
 
 @NgModule({
   imports: [
@@ -80,6 +82,6 @@ import { EditorMdDirective } from './editor/editor-md.directive';
     EditorMdDirective,
   ],
   declarations: [
-    EditorMdDirective, PaginationComponent]
+    EditorMdDirective, PaginationComponent, CommentComponent, CommentItemComponent]
 })
 export class SharedModule { }
