@@ -26,7 +26,6 @@ async function index (obj) {
     page = obj.page;
     delete obj.page
   }
-  console.log(obj)
   let pageNum = config.paginationNum;
   if (obj.count) {
     delete obj.count

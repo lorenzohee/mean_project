@@ -13,11 +13,23 @@ const swaggerDocument = require('./swagger.json');
 const routes = require('../routes/index.route');
 const config = require('./config');
 const passport = require('./passport')
+var fs = require('fs');//文件模块
+var FileStreamRotator = require('file-stream-rotator');
 
 const app = express();
 
 if (config.env === 'development') {
-  app.use(logger('dev'));
+  //设置日志文件目录
+  var logDirectory = __dirname + '/logs';
+  //确保日志文件目录存在 没有则创建
+  fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+  //创建一个写路由
+  var accessLogStream = FileStreamRotator.getStream({
+    filename: logDirectory + '/accss-%DATE%.log',
+    frequency: 'daily',
+    verbose: false
+  })
+  app.use(logger('combined', { stream: accessLogStream }));//写入日志文件
 }
 
 // Choose what fronten framework to serve the dist from
