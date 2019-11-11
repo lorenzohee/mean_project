@@ -3,7 +3,7 @@
   <!-- Grid row -->
   <div class="row">
     <!-- Grid column -->
-    <div class="col-lg-6">
+    <div class="col-lg-12" *ngFor="let comment of comments">
       <!-- Newsfeed -->
       <div class="mdb-feed">
         <!-- Fourth news -->
@@ -12,13 +12,11 @@
           <div class="excerpt">
             <!-- Brief -->
             <div class="brief">
-              <a class="name">Lili Rose</a> said
-              <div class="date">2 days ago</div>
+              <a class="name">{{comment.name}}</a> 留言
+              <div class="date">{{comment.createdAt | date: 'shortDate'}}</div>
             </div>
             <!-- Added text -->
-            <div class="added-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero inventore,
-              iste quas libero eius? Vitae sint neque animi alias sunt dolor, accusantium ducimus, non placeat
-              voluptate.</div>
+            <div class="added-text">{{comment.body}}</div>
           </div>
 
         </div>

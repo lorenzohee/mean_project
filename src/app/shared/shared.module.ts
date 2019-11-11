@@ -80,6 +80,7 @@ import { CommentItemComponent } from './comment/comment-item/comment-item.compon
     MDBBootstrapModule,
     PaginationComponent,
     EditorMdDirective,
+    CommentComponent, CommentItemComponent
   ],
   declarations: [
     EditorMdDirective, PaginationComponent, CommentComponent, CommentItemComponent]

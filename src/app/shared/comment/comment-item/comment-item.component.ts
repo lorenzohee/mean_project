@@ -8,16 +8,8 @@ import { Comment } from '../comment';
 })
 export class CommentItemComponent implements OnInit {
 
-  private _comments: Comment[]
-
   @Input()
-  set comments(comments: Comment[]) {
-    this._comments = comments
-  }
-
-  get comments() {
-    return this._comments
-  }
+  comments: Comment[]
 
   @Output()
   OnDelete: EventEmitter<Comment> = new EventEmitter();
@@ -27,7 +19,7 @@ export class CommentItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  commentDelete(id: string){
+  commentDelete(id: string) {
     this.OnDelete.emit(new Comment())
   }
 

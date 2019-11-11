@@ -1,3 +1,5 @@
+import { Comment } from "../shared/comment/comment";
+
 export class Blog {
   title: string;
   content: string;
@@ -6,4 +8,5 @@ export class Blog {
   blogType: string;
   bannerUrl: string;
   blogAccess: string;
+  comments: Comment[]
 }

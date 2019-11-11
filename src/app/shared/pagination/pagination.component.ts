@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input, SimpleChange } from '@a
 export class PaginationComponent implements OnInit {
 
   private _total: number;
-  private _num: number;
+  public _num: number;
   public pageList = [];
 
   @Input()

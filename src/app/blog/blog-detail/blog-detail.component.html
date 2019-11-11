@@ -37,7 +37,10 @@
       <!--Grid column-->
     </div>
     <!--Grid row-->
-    <div markdown class="grey-text mb-5 container" style="white-space: pre-line;">{{blog.content}}</div>
+    <div markdown class="grey-text container" style="white-space: pre-line;">{{blog.content}}</div>
+    <section class="container my-5">
+      <app-comment [blog_id]="blog._id" blog_type="Blog"></app-comment>
+    </section>
   </section>
   <!--Section: Products v.4-->
 </div>

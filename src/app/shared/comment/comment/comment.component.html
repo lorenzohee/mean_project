@@ -1,1 +1,44 @@
-<p>comment works!</p>
+<!-- Section: form gradient -->
+<section class="form-gradient mb-5">
+
+  <!--Form with header-->
+  <mdb-card>
+    <mdb-card-body class="mx-4">
+      <form [formGroup]='commentForm' (ngSubmit)="onSubmit()">
+        <div class="md-form">
+          <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon>
+          <textarea type="text" id="comment-body" class="md-textarea form-control" rows="5" mdbInput
+            formControlName='body'></textarea>
+          <label for="comment-body">留言信息</label>
+        </div>
+
+        <!--Grid row-->
+        <div class="row d-flex align-items-center mb-3 mt-4">
+          <div class="md-form" style="flex: 1">
+            <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+            <input type="text" id="comment-name" class="form-control" mdbInput formControlName='name'>
+            <label for="comment-name">昵称</label>
+          </div>
+
+          <div class="md-form" style="flex: 1">
+            <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+            <input type="email" id="comment-email" class="form-control" mdbInput formControlName='email'>
+            <label for="comment-email">邮箱</label>
+          </div>
+          <!--Grid column-->
+          <div class="float-right">
+            <button type="submit" mdbBtn color="primary" rounded="true" [disabled]='!commentForm.valid'
+              class="z-depth-1a">发送</button>
+          </div>
+          <!--Grid column-->
+
+        </div>
+      </form>
+      <!--Grid row-->
+    </mdb-card-body>
+  </mdb-card>
+  <!--/Form with header-->
+
+</section>
+<!-- Section: form gradient -->
+<app-comment-item [comments]="comments"></app-comment-item>
