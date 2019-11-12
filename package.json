@@ -43,6 +43,7 @@
     "express-async-handler": "^1.1.3",
     "express-jwt": "^5.3.1",
     "express-validation": "^1.0.2",
+    "file-stream-rotator": "^0.5.5",
     "formidable": "^1.2.1",
     "hammerjs": "^2.0.8",
     "helmet": "^3.12.0",

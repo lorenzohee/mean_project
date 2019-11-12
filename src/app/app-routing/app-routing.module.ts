@@ -17,6 +17,9 @@ const routes: Routes = [{
   path: 'blogs',
   loadChildren: 'app/blog/blog.module#BlogModule'
 }, {
+  path: 'cfgs',
+  loadChildren: 'app/cfg/cfg.module#CfgModule'
+}, {
   path: 'about',
   loadChildren: 'app/about/about.module#AboutModule'
 }, {

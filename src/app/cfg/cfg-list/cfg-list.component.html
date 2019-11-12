@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="text-center pt-4">
+    <button type="button" mdbBtn color="primary" mdbWavesEffect [routerLink]="['new']">创建配置文件</button>
+  </div>
+  <!-- Section: Blog v.4 -->
+  <section class="my-5">
+    <table class="table table-hover">
+      <thead>
+        <th>id</th>
+        <th>key</th>
+        <th>title</th>
+        <th>valu</th>
+        <th>note</th>
+        <th>createdAt</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cfg of cfgs$ | async">
+          <td>{{cfg._id}}</td>
+          <td>{{cfg.key}}</td>
+          <td>{{cfg.title}}</td>
+          <td>{{cfg.valu}}</td>
+          <td>{{cfg.note}}</td>
+          <td>{{cfg.createdAt}}</td>
+          <td>
+            <button type="button" mdbBtn color="info" mdbWavesEffect class="btn-sm"
+              [routerLink]="['/cfgs', cfg._id, 'edit']">编辑</button>
+            <button type="button" mdbBtn color="warn" mdbWavesEffect [routerLink]="['new']" class="btn-sm">删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- Section: Blog v.4 -->
+
+  <app-pagination (OnChange)="changePage($event)" [total]="cfgCount$ | async" *ngIf="cfgCount$"></app-pagination>
+
+</div>

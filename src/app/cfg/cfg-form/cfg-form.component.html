@@ -1,0 +1,22 @@
+<div class="container py-4">
+  <form [formGroup]='cfgForm' (ngSubmit)="onSubmit()">
+    <div class="md-form">
+      <input type="text" id="form_title" class="md-textarea form-control" mdbInput formControlName='title'>
+      <label for="form_title">输入标题</label>
+    </div>
+    <div class="md-form">
+      <input type="text" id="form_key" class="md-textarea form-control" mdbInput formControlName='key'>
+      <label for="form_key">输入关键词</label>
+    </div>
+    <div class="md-form">
+      <textarea id="form_valu" class="md-textarea md-textarea-auto form-control" formControlName='valu'></textarea>
+      <label for="form_valu">输入内容</label>
+    </div>
+    <div class="md-form">
+      <textarea id="form_note" class="md-textarea md-textarea-auto form-control" formControlName='note'></textarea>
+      <label for="form_note">输入备注信息</label>
+    </div>
+    <button mdbBtn color="info" class="my-4" type="submit" [disabled]='!cfgForm.valid'>Submit</button>
+    <button mdbBtn color="light" class="my-4 mx-4" type="button" (click)="goback()">Go Back</button>
+  </form>
+</div>
