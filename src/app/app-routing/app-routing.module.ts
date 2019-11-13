@@ -20,6 +20,9 @@ const routes: Routes = [{
   path: 'cfgs',
   loadChildren: 'app/cfg/cfg.module#CfgModule'
 }, {
+  path: 'intelligenceAudio',
+  loadChildren: 'app/intelligence-audio/intelligence-audio.module#IntelligenceAudioModule'
+}, {
   path: 'about',
   loadChildren: 'app/about/about.module#AboutModule'
 }, {

@@ -11,7 +11,7 @@ const cfgSchema = Joi.object({
 
 
 module.exports = {
-  insert, index, update, destroy, detail, count
+  insert, index, update, destroy, detail, count, getCfgByKey
 }
 
 async function insert (cfg) {
@@ -48,4 +48,8 @@ async function update (cfg, id) {
 
 async function destroy (id) {
   return await Cfg.findByIdAndRemove(id)
+}
+
+async function getCfgByKey (key) {
+  return await Cfg.find({ key: key }).limit(1)
 }

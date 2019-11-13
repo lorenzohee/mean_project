@@ -1,0 +1,9 @@
+<div class="container py-4">
+  <form [formGroup]='textForm' (ngSubmit)="onSubmit()">
+    <div class="md-form">
+      <textarea id="form_valu" class="md-textarea md-textarea-auto form-control" formControlName='body'></textarea>
+      <label for="form_valu">输入内容</label>
+    </div>
+    <button mdbBtn color="info" class="my-4" type="submit" [disabled]='!textForm.valid'>Submit</button>
+  </form>
+</div>

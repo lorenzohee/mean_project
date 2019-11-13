@@ -19,7 +19,7 @@ var FileStreamRotator = require('file-stream-rotator');
 const app = express();
 
 //设置日志文件目录
-var logDirectory = __dirname + '/logs';
+var logDirectory = path.join(__dirname, '../logs');
 //确保日志文件目录存在 没有则创建
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 //创建一个写路由

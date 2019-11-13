@@ -4,6 +4,7 @@ const authRoutes = require('./auth.route');
 const blogRoutes = require('./blog.route');
 const commentRoutes = require('./comment.route');
 const cfgRoutes = require('./cfg.route');
+const intelligenceRoutes = require('./intelligence.route')
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -17,5 +18,6 @@ router.use('/user', userRoutes);
 router.use('/blogs', blogRoutes);
 router.use('/comments', commentRoutes);
 router.use('/cfgs', cfgRoutes);
+router.use('/intelligenceRoutes', intelligenceRoutes)
 
 module.exports = router;
