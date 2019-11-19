@@ -27,13 +27,13 @@ async function getBaiduAudioFileByText (obj) {
   await client.text2audio(text, option).then(function (result) {
     if (result.data) {
       //设置日志文件目录
-      var logDirectory = path.join(__dirname, '../../audio');
+      var logDirectory = path.join(__dirname, '../../audio/');
       //确保日志文件目录存在 没有则创建
       fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
       let timeStamp = new Date()
       audioFile = `audio-${timeStamp.getTime()}.mp3`
       console.log(`语音合成成功，文件保存到${audioFile}，打开听听吧`);
-      fs.writeFileSync(`${logDirectory}\\${audioFile}`, result.data);
+      fs.writeFileSync(`${logDirectory}${audioFile}`, result.data);
     } else {
       // 合成服务发生错误
       console.log('语音合成失败: ' + JSON.stringify(result));
