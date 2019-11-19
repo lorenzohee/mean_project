@@ -7,9 +7,9 @@ const intelligence = require('../controllers/intelligence.controller');
 const router = express.Router();
 module.exports = router;
 
-router.get('/text-to-speach', textToSpeach);
+router.post('/text-to-speach', textToSpeach);
 
 async function textToSpeach (req, res) {
-  let download_url = await intelligence.getBaiduAudioFileByText(req.query.content)
+  let download_url = await intelligence.getBaiduAudioFileByText(req.body)
   res.json(download_url);
 }

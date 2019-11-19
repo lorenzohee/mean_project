@@ -14,6 +14,6 @@ export class IntelligenceService {
   constructor(private httpClient: HttpClient) { }
 
   postText(form): Observable<String> {
-    return this.httpClient.post<String>(`/api/intelligence`, form, httpOptions);
+    return this.httpClient.post<String>(`/api/intelligence/text-to-speach`, form, httpOptions);
   }
 }

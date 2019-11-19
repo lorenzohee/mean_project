@@ -18,6 +18,6 @@ router.use('/user', userRoutes);
 router.use('/blogs', blogRoutes);
 router.use('/comments', commentRoutes);
 router.use('/cfgs', cfgRoutes);
-router.use('/intelligenceRoutes', intelligenceRoutes)
+router.use('/intelligence', intelligenceRoutes)
 
 module.exports = router;

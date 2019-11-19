@@ -30,6 +30,7 @@
     "angular-pipes": "^9.1.0",
     "angular-tree-component": "^8.4.0",
     "animate.css": "^3.7.2",
+    "baidu-aip-sdk": "^2.4.4",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.2",
     "chart.js": "^2.5.0",

@@ -1,9 +1,41 @@
 <div class="container py-4">
   <form [formGroup]='textForm' (ngSubmit)="onSubmit()">
-    <div class="md-form">
-      <textarea id="form_valu" class="md-textarea md-textarea-auto form-control" formControlName='body'></textarea>
-      <label for="form_valu">输入内容</label>
+    <label for="form_content">要合成的内容(限定500字)</label>
+    <div class="md-form" id="md">
+      <textarea id="form_content" class="md-textarea md-textarea-auto form-control" formControlName='body'></textarea>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="md-form">
+          <input type="text" id="form_spd" class="md-textarea form-control" mdbInput formControlName='spd'>
+          <label for="form_spd">输入语速（0-15）</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="md-form">
+          <input type="text" id="form_pit" class="md-textarea form-control" mdbInput formControlName='pit'>
+          <label for="form_pit">输入音调（0-15）</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="md-form">
+          <input type="text" id="form_vol" class="md-textarea form-control" mdbInput formControlName='vol'>
+          <label for="form_vol">输入音量（0-15）</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="md-form">
+          <mat-select placeholder="请选择发声类型" formControlName='per'>
+            <mat-option value="0">普通女声</mat-option>
+            <mat-option value="1">普通男声</mat-option>
+            <mat-option value="2">情感合成-度逍遥</mat-option>
+            <mat-option value="3">情感合成-度丫丫</mat-option>
+          </mat-select>
+        </div>
+      </div>
     </div>
     <button mdbBtn color="info" class="my-4" type="submit" [disabled]='!textForm.valid'>Submit</button>
+    <button mdbBtn color="info" class="my-4 mx-4" type="button" [disabled]='!downloadLink'
+      (click)="downloadAudioFile()">Download</button>
   </form>
 </div>
