@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {AuthService} from '../auth.service';
+import { AuthService } from '../auth.service';
+import { TokenStorage } from '../token.storage';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +15,19 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
+  storage: TokenStorage
 
   ngOnInit() {
+    this.storage = new TokenStorage();
   }
 
   login(): void {
+    let that = this;
     this.authService.login(this.email, this.password)
-    .subscribe(data => {
-      this.router.navigate(['']);
-    })
+      .subscribe(data => {
+        that.storage.saveStorage('user', JSON.stringify(data.user));
+        this.router.navigate(['']);
+      })
   }
 
 }

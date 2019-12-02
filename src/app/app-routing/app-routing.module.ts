@@ -26,6 +26,9 @@ const routes: Routes = [{
   path: 'about',
   loadChildren: 'app/about/about.module#AboutModule'
 }, {
+  path: 'comments',
+  loadChildren: 'app/comments/comments.module#CommentsModule'
+}, {
   path: '',
   redirectTo: '/home',
   pathMatch: 'full'

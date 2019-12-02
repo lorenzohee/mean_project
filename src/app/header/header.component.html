@@ -28,20 +28,23 @@
             <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'note'}"
               queryParamsHandling="merge">日志</a>
           </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">联系我</a>
+          </li>
           <!-- Dropdown -->
-          <li class="nav-item dropdown mx-2" dropdown>
+          <li class="nav-item dropdown mx-2" dropdown *ngIf="user">
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
-              mdbWavesEffect>Setting<span class="caret"></span></a>
+              mdbWavesEffect>配置<span class="caret"></span></a>
             <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
               <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/cfgs']">配置</a>
-              <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+              <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/comments']">评论</a>
               <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
               <div class="divider dropdown-divider"></div>
               <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
             </div>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">联系我</a>
           </li>
 
         </ul>
@@ -56,7 +59,8 @@
               <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""
                 class="img-fluid rounded-circle z-depth-0" style="height: 35px;"></a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" mdbWavesEffect href="#">{{user.fullname}} profile</a>
+              <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['admin', 'admin']">{{user.fullname}}
+                profile</a>
               <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="user && user.isAdmin"
                 [routerLink]="['/admin']">admin</a>
               <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
