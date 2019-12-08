@@ -6,9 +6,12 @@
     </div>
     <div class="md-form">
       <mat-select placeholder="请选择文章类型" formControlName='blogType'>
-        <mat-option value="note">日志</mat-option>
-        <mat-option value="document">文档</mat-option>
-        <mat-option value="skill">技术</mat-option>
+        <mat-option *ngFor="let type of blogTypes" value="{{type.key}}">{{type.title}}</mat-option>
+      </mat-select>
+    </div>
+    <div class="md-form">
+      <mat-select placeholder="请选择文章标签" formControlName='tags' multiple>
+        <mat-option *ngFor="let tag of blogTags" value="{{tag.key}}">{{tag.title}}</mat-option>
       </mat-select>
     </div>
     <label for="form_content">文章内容</label>
@@ -18,7 +21,7 @@
     </div>
     <label for="form_content">展示图片</label>
     <div class="md-form">
-      <img *ngIf="blogForm.value.bannerUrl" [src]="blogForm.value.bannerUrl" class="w-100 pb-4">
+      <img *ngIf="blogForm.value.bannerUrl" [src]="blogForm.value.bannerUrl" class="pb-4" style="max-width: 100%">
       <input type="hidden" formControlName='bannerUrl'>
       <input type="file" id="form_file" class="md-file form-control" formControlName='fileToUpload'
         (change)="handleFileInput($event.target.files)" accept="image/*">

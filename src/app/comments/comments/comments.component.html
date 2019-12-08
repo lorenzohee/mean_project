@@ -1,0 +1,32 @@
+<div class="container">
+  <table mdbTable responsive="true" striped="true">
+    <thead>
+      <tr>
+        <th>内容</th>
+        <th>评论者姓名</th>
+        <th>邮箱</th>
+        <th>父评论</th>
+        <th>文章</th>
+        <th>时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let comment of comments$ | async">
+        <td>{{comment.body}}</td>
+        <td>{{comment.name}}</td>
+        <td>{{comment.email}}</td>
+        <td>{{comment.comment_id}}</td>
+        <td><a [routerLink]="['/blogs', comment.parent_id]" class="btn-link">{{comment.parent_id}}</a></td>
+        <td>{{comment.createdAt | date:"yyyy-MM-dd"}}</td>
+        <td>
+          <button type="button" mdbBtn color="danger" rounded="true" mdbWavesEffect (click)="deleteComment(comment._id)"
+            class="z-depth-1a btn-sm m-0">
+            <i class="far fa-trash-alt pr-2"></i>
+            <span class="clearfix d-none d-md-inline-block">删除</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

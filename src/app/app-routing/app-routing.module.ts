@@ -9,25 +9,31 @@ const routes: Routes = [{
   component: HomeComponent
 }, {
   path: 'auth',
-  loadChildren: 'app/auth/auth.module#AuthModule'
+  loadChildren: () => import('../auth/auth.module').then(mod => mod.AuthModule)
 }, {
   path: 'admin',
-  loadChildren: 'app/admin/admin.module#AdminModule'
+  loadChildren: () => import('../admin/admin.module').then(mod => mod.AdminModule)
 }, {
   path: 'blogs',
-  loadChildren: 'app/blog/blog.module#BlogModule'
+  loadChildren: () => import('../blog/blog.module').then(mod => mod.BlogModule)
 }, {
   path: 'cfgs',
-  loadChildren: 'app/cfg/cfg.module#CfgModule'
+  loadChildren: () => import('../cfg/cfg.module').then(mod => mod.CfgModule)
 }, {
   path: 'intelligenceAudio',
-  loadChildren: 'app/intelligence-audio/intelligence-audio.module#IntelligenceAudioModule'
+  loadChildren: () => import('../intelligence-audio/intelligence-audio.module').then(mod => mod.IntelligenceAudioModule)
 }, {
   path: 'about',
-  loadChildren: 'app/about/about.module#AboutModule'
+  loadChildren: () => import('../about/about.module').then(mod => mod.AboutModule)
 }, {
   path: 'comments',
-  loadChildren: 'app/comments/comments.module#CommentsModule'
+  loadChildren: () => import('../comments/comments.module').then(mod => mod.CommentsModule)
+}, {
+  path: 'feedback',
+  loadChildren: () => import('../feedback/feedback.module').then(mod => mod.FeedbackModule)
+}, {
+  path: 'dashboard',
+  loadChildren: () => import('../dashboard/dashboard.module').then(mod => mod.DashboardModule)
 }, {
   path: '',
   redirectTo: '/home',

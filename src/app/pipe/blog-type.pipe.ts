@@ -17,6 +17,9 @@ export class BlogTypePipe implements PipeTransform {
       case 'skill':
         tmp = '技术';
         break;
+      case 'recommand':
+        tmp = '推荐';
+        break;
       default:
         tmp = '无'
     }

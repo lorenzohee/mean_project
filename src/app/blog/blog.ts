@@ -1,4 +1,4 @@
-import { Comment } from "../shared/comment/comment";
+import { Comment } from "../comments/comment";
 
 export class Blog {
   title: string;
@@ -8,5 +8,6 @@ export class Blog {
   blogType: string;
   bannerUrl: string;
   blogAccess: string;
+  tags: string[];
   comments: Comment[]
 }

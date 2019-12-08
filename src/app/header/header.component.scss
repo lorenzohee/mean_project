@@ -1,7 +1,7 @@
 header {
     width: 100%;
     .logo {
-      background-image: url('../../assets/logo.png');
+      background-image: url('../../assets/logo.jpg');
       width: 50px;
       height: 50px;
       background-size: contain;
@@ -41,4 +41,8 @@ header {
       margin-top: -70px;
     }
   }
- 
+.view {
+    background: url("../../assets/home_bg.jpg")no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}

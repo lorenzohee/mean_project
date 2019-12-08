@@ -6,7 +6,7 @@ const cfgSchema = Joi.object({
   key: Joi.string().required(),
   title: Joi.string().required(),
   valu: Joi.string().required(),
-  note: Joi.string()
+  note: Joi.any()
 })
 
 
@@ -51,5 +51,10 @@ async function destroy (id) {
 }
 
 async function getCfgByKey (key) {
-  return await Cfg.find({ key: key }).limit(1)
+  let cfgs = await Cfg.find({ key: key }).limit(1)
+  if (cfgs.length == 1) {
+    return cfgs[0]
+  } else {
+    return null;
+  }
 }

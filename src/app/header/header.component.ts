@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { AuthService } from '../auth/auth.service';
 
@@ -10,15 +10,21 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  url: string = ""
   @Input() user: any = {};
 
   constructor(
     private authService: AuthService,
     private router: Router
-  ) { }
-
-  ngOnInit() {
+  ) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.url = event.url;
+      }
+    })
   }
+
+  ngOnInit() { }
 
   logout(): void {
     this.authService.signOut();

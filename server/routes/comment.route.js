@@ -6,7 +6,7 @@ const commentCtrl = require('../controllers/comment.controller');
 const router = express.Router();
 module.exports = router;
 
-router.get('/', index);
+router.get('/', passport.authenticate('jwt', { session: false }), index);
 router.get('/:id', passport.authenticate('jwt', { session: false }), detail);
 router.post('/', insert);
 router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy);

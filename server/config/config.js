@@ -41,8 +41,6 @@ const config = {
     port: envVars.MONGO_PORT
   },
   paginationNum: 10,
-  baidu_apikey: 'zDx0tRyiGxBtdMNRCTUC0GkI',
-  baidu_secretkey: 'CT4ohqBYQL7Ktt1rsmlqE8qUcbzDTB74'
 };
 
 module.exports = config;

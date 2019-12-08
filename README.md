@@ -41,3 +41,21 @@ docker-compose up -d
 - The MEAN name was coined by Valeri Karpov.
 - Initial concept and development was done by Amos Haviv and sponsered by Linnovate.
 - Inspired by the great work of Madhusudhan Srinivasa.
+
+
+###添加nodejs监控模块
+```
+npm install express-status-monitor
+```
+通过/status检测node指标
+
+###同时监控前端和后端的更改刷新
+concurrently
+
+
+###本项目启用了pm2进行全局的监控，请先全局安装pm2及pm2-web
+```
+npm install -g pm2
+npm install -g pm2-web
+pm2-web
+```

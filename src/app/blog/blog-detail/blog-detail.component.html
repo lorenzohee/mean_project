@@ -1,46 +1,53 @@
-<div class="container-fluid">
-  <!--Section: Products v.4-->
-  <section class="pb-3" *ngIf="blog$ | async as blog">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="w-100 mb-4">
-        <!--Collection card-->
-        <mdb-card class="collection-card z-depth-1-half">
-          <!--Card image-->
-          <div class="view zoom waves-light" mdbWavesEffect>
-            <mdb-card-img src="{{ blog.bannerUrl }}" alt="" class="zoomIn">
-            </mdb-card-img>
-            <div class="w-100 display-4 text-center"
-              style="position: absolute; bottom: 3rem; padding: 1.2rem;background-color: rgba(255,255,255,.7);">
-              <a>
-                <p><strong class="text-small">{{ blog.title }}</strong> <span style="font-size: 16px"> by
-                    {{(blog.blogType || '') | blogType}}</span></p>
+<div class="container py-5">
+  <div class="row">
+    <!--Section: Products v.4-->
+    <section class="col-12 col-md-9" *ngIf="blog$ | async as blog">
+      <section class="px-2 bg-white">
+        <header class="text-center py-5">
+          <h2>{{ blog.title }}</h2>
+          <div class="small mt-3">
+            <span class="mx-2 grey-text">
+              <i class="fas fa-tag pr-2"></i>
+              <span class="clearfix d-none d-md-inline-block">{{(blog.blogType || '') | blogType}}</span>
+            </span>
+            <span class="mx-2 grey-text">
+              <i class="far fa-clock pr-2"></i>
+              <span class="clearfix d-none d-md-inline-block">{{blog.createdAt | date:"yyyy-MM-dd"}}</span>
+            </span>
+            <span class="mx-2" *ngIf="user">
+              <a class="grey-text" [routerLink]="['/blogs', blog._id, 'edit']">
+                <i class="far fa-edit pr-2"></i>
+                <span class="clearfix d-none d-md-inline-block">编辑</span>
               </a>
-              <p *ngIf="user">
-                <a class="btn btn-tw bg-green-400 color-white mr-4" [routerLink]="['/blogs', blog._id, 'edit']">
-                  <i class="far fa-edit pr-2"></i>
-                  <span class="clearfix d-none d-md-inline-block">编辑(22)</span>
-                </a>
-                <!-- Google+ -->
-                <a class="btn btn-gplus bg-red-400" (click)="deleteBlog(blog._id)">
-                  <i class="far fa-trash-alt pr-2"></i>
-                  <span class="clearfix d-none d-md-inline-block">删除</span>
-                </a>
-              </p>
-            </div>
+            </span>
+            <span class="mx-2" *ngIf="user">
+              <!-- Google+ -->
+              <a class="grey-text" (click)="deleteBlog(blog._id)">
+                <i class="far fa-trash-alt pr-2"></i>
+                <span class="clearfix d-none d-md-inline-block">删除</span>
+              </a>
+            </span>
           </div>
-          <!--Card image-->
-        </mdb-card>
-        <!--Collection card-->
-      </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
-    <div markdown class="grey-text container" style="white-space: pre-line;">{{blog.content}}</div>
-    <section class="container my-5">
-      <app-comment [blog_id]="blog._id" blog_type="Blog"></app-comment>
+        </header>
+        <div markdown class="grey-text" style="white-space: pre-line;">{{blog.content}}</div>
+        <hr />
+        <div class="pb-3">
+          <i class="fas fa-tags grey-text"></i>
+          <span *ngFor="let tag of blog.tags" class="text-default mx-2">
+            <mdb-badge pill="true" color="light-blue">
+              {{(tag || '') | blogType}}
+            </mdb-badge>
+          </span>
+        </div>
+      </section>
+      <!--Grid row-->
+      <section class="my-5 px-0">
+        <app-comment [blog_id]="blog._id" blog_type="Blog"></app-comment>
+      </section>
     </section>
-  </section>
-  <!--Section: Products v.4-->
+    <section class="col-0 col-md-3">
+      <app-sidebar></app-sidebar>
+    </section>
+    <!--Section: Products v.4-->
+  </div>
 </div>

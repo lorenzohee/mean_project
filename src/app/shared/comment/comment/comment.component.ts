@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Comment } from '../comment';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CommentService } from '../comment.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { CommentService } from '../../../comments/comment.service';
+import { Comment } from '../../../comments/comment';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-comment',
@@ -26,7 +27,7 @@ export class CommentComponent implements OnInit {
     email: ['', [Validators.email, Validators.required]]
   })
 
-  constructor(private fb: FormBuilder, private commentService: CommentService, private router: Router, private route: ActivatedRoute, private location: Location) { }
+  constructor(private fb: FormBuilder, private commentService: CommentService, private router: Router, private route: ActivatedRoute, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getCommentsByArticleId()
@@ -39,6 +40,9 @@ export class CommentComponent implements OnInit {
     this.commentService.createComment(this.commentForm.value).subscribe(res => {
       that.comments.unshift(res)
       that.commentForm.reset()
+      that.snackBar.open('评论成功', '关闭', {
+        duration: 20000,
+      });
     })
   }
 

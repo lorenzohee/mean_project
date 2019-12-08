@@ -15,7 +15,7 @@ export class CfgFormComponent implements OnInit {
     title: ['', Validators.required],
     key: ['', Validators.required],
     valu: ['', Validators.required],
-    note: ['', Validators.required]
+    note: ['']
   })
   constructor(private fb: FormBuilder, private cfgService: CfgService, private router: Router, private route: ActivatedRoute, private location: Location) { }
 
@@ -26,11 +26,11 @@ export class CfgFormComponent implements OnInit {
   onSubmit() {
     if (this.cfgForm.value._id) {
       this.cfgService.updateCfg(this.cfgForm.value, this.cfgForm.value._id).subscribe(res => {
-        this.router.navigate([`/cfgs/${res._id}`]);
+        this.router.navigate([`/cfgs`]);
       })
     } else {
       this.cfgService.createCfg(this.cfgForm.value).subscribe(res => {
-        this.router.navigate([`/cfgs/${res._id}`]);
+        this.router.navigate([`/cfgs`]);
       })
     }
   }
@@ -38,6 +38,13 @@ export class CfgFormComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.cfgService.getCfgById(id).subscribe(res => {
+        this.cfgForm = this.fb.group({
+          _id: [''],
+          title: ['', Validators.required],
+          key: ['', Validators.required],
+          valu: ['', Validators.required],
+          note: ['']
+        })
         this.cfgForm.patchValue({
           _id: res._id,
           title: res.title,

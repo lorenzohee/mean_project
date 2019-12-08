@@ -20,8 +20,12 @@ export class CfgService {
     const tokenVal = this.token.getToken();
   }
 
+
   getCfgList(obj): Observable<Cfg[]> {
-    let params = new HttpParams().set('page', obj.get('page') || '1')
+    let params = new HttpParams().set('page', obj.page || '1')
+    if (obj.key) {
+      params = params.set('key', obj.key)
+    }
     return this.httpClient.get<Cfg[]>(`/api/cfgs`, Object.assign({ params }, httpOptions));
   }
 

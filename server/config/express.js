@@ -18,6 +18,10 @@ var FileStreamRotator = require('file-stream-rotator');
 
 const app = express();
 
+//add monitor
+
+app.use(require('express-status-monitor')())
+
 //设置日志文件目录
 var logDirectory = path.join(__dirname, '../logs');
 //确保日志文件目录存在 没有则创建
@@ -60,10 +64,10 @@ app.use(/^((?!(api)).)*/, (req, res) => {
 });
 
 //React server
-app.use(express.static(path.join(__dirname, '../../node_modules/material-dashboard-react/dist')))
-app.use(/^((?!(api)).)*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '../../dist/index.html'));
-});
+// app.use(express.static(path.join(__dirname, '../../node_modules/material-dashboard-react/dist')))
+// app.use(/^((?!(api)).)*/, (req, res) => {
+//   res.sendFile(path.join(__dirname, '../../dist/index.html'));
+// });
 
 
 app.use(bodyParser.json());

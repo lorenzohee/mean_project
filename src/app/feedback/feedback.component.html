@@ -1,0 +1,32 @@
+<div class="container">
+  <table mdbTable responsive="true" striped="true">
+    <thead>
+      <tr>
+        <th>内容</th>
+        <th>留言者姓名</th>
+        <th>邮箱</th>
+        <th>电话</th>
+        <th>公司</th>
+        <th>时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let feedback of feedback$ | async">
+        <td>{{feedback.body}}</td>
+        <td>{{feedback.name}}</td>
+        <td>{{feedback.email}}</td>
+        <td>{{feedback.phone}}</td>
+        <td>{{feedback.company}}</td>
+        <td>{{feedback.createdAt | date:"yyyy-MM-dd"}}</td>
+        <td>
+          <button type="button" mdbBtn color="danger" rounded="true" mdbWavesEffect
+            (click)="deleteFeedBack(feedback._id)" class="z-depth-1a btn-sm m-0">
+            <i class="far fa-trash-alt pr-2"></i>
+            <span class="clearfix d-none d-md-inline-block">删除</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

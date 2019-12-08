@@ -2,17 +2,17 @@ var config = require('../config/config')
 let AipSpeech = require("baidu-aip-sdk").speech;
 let fs = require('fs');
 const path = require('path');
+const CfgCtl = require('./cfg.controller')
 
 module.exports = {
   getBaiduAudioFileByText
 }
 
 async function getBaiduAudioFileByText (obj) {
-  var APP_ID = 11809753;
-  var API_KEY = config.baidu_apikey;
-  var SECRET_KEY = config.baidu_secretkey;
-  let client = new AipSpeech(APP_ID, API_KEY, SECRET_KEY);
-
+  let APP_ID = await CfgCtl.getCfgByKey('BAIDU_APP_ID'),
+    API_KEY = await CfgCtl.getCfgByKey('BAIDU_API_KEY'),
+    SECRET_KEY = await CfgCtl.getCfgByKey('BAIDU_SECRET_KEY');
+  let client = new AipSpeech(APP_ID.valu, API_KEY.valu, SECRET_KEY.valu);
   let audioFile = '';
 
   let defaultOption = {
@@ -40,7 +40,7 @@ async function getBaiduAudioFileByText (obj) {
     }
   }, function (err) {
     console.log(err);
-  });
+  }).catch(e => console.log(e));
 
   return audioFile;
 }

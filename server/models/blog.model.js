@@ -22,6 +22,9 @@ const BlogSchema = new mongoose.Schema({
   blogAccess: {
     type: String,
     required: true
+  },
+  tags: {
+    type: Array
   }
 }, {
     versionKey: false

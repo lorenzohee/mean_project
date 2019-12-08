@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const Comment = require('../models/comment.model');
+const config = require('../config/config')
 
 const commentSchema = Joi.object({
   body: Joi.string().required(),
@@ -21,7 +22,13 @@ async function insert (comment) {
 }
 
 async function index (obj) {
-  return await Comment.find(obj).sort({ '_id': -1 });
+  let page = 1;
+  if (obj.page) {
+    page = obj.page;
+    delete obj.page
+  }
+  let pageNum = config.paginationNum;
+  return await Comment.find(obj).sort({ '_id': -1 }).skip((page - 1) * pageNum).limit(pageNum);
 }
 
 async function detail (id) {

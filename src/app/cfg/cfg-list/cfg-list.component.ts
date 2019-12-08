@@ -21,12 +21,14 @@ export class CfgListComponent implements OnInit {
   ngOnInit() {
     this.cfgs$ = this.route.queryParamMap.pipe(
       switchMap(params => {
-        return this.cfgService.getCfgList(params)
+        let page = params.get('page') || 1
+        return this.cfgService.getCfgList({ page: page })
       })
     )
     this.cfgCount$ = this.route.queryParamMap.pipe(
       switchMap(params => {
-        return this.cfgService.getCfgCount(params)
+        let page = params.get('page') || 1
+        return this.cfgService.getCfgCount({ page: page })
       })
     )
   }
@@ -47,5 +49,4 @@ export class CfgListComponent implements OnInit {
       queryParams: params
     });
   }
-
 }

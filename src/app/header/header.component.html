@@ -1,75 +1,154 @@
-<header id="top-section">
-  <!--Navbar-->
-  <img class="header_banner" src="/assets/banner.jpg" />
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light lighten-1 nav-overwrite z-depth-0 mt-md-n5"
+<header class="h-100" *ngIf='url=="/home"'>
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar intro-fixed-nav"
     [containerInside]="false">
-    <div class="container">
-      <!-- Navbar brand -->
-      <mdb-navbar-brand><a class="navbar-brand d-none" href="#">Navbar</a></mdb-navbar-brand>
-      <!-- Collapsible content -->
-      <links>
-        <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item mx-2">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/home']">主页</a>
-          </li>
-          <li class="nav-item mx-2 d-none">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'skill'}"
-              queryParamsHandling="merge">技术</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']"
-              [queryParams]="{blogType: 'document'}" queryParamsHandling="merge">文档</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'note'}"
-              queryParamsHandling="merge">日志</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">联系我</a>
-          </li>
-          <!-- Dropdown -->
-          <li class="nav-item dropdown mx-2" dropdown *ngIf="user">
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
-              mdbWavesEffect>配置<span class="caret"></span></a>
-            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/cfgs']">配置</a>
-              <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/comments']">评论</a>
-              <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-              <div class="divider dropdown-divider"></div>
-              <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
-            </div>
-          </li>
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand" href="#"></a>
+    </mdb-navbar-brand>
+    <links>
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/home']">主页</a>
+        </li>
+        <li class="nav-item mx-2 d-none">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'skill'}"
+            queryParamsHandling="merge">技术</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']"
+            [queryParams]="{blogType: 'document'}" queryParamsHandling="merge">文档</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'note'}"
+            queryParamsHandling="merge">日志</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">联系我</a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown mx-2" dropdown *ngIf="user">
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+            mdbWavesEffect>配置<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/cfgs']">配置</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/comments']">评论</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/feedback']">网站留言</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+          </div>
+        </li>
 
-        </ul>
-        <!-- Links -->
+      </ul>
+      <!-- Links -->
 
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-          <li class="nav-item" *ngIf="user">
-            <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
-          </li>
-          <li class="nav-item avatar dropdown" dropdown *ngIf="user">
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""
-                class="img-fluid rounded-circle z-depth-0" style="height: 35px;"></a>
-            <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['admin', 'admin']">{{user.fullname}}
-                profile</a>
-              <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="user && user.isAdmin"
-                [routerLink]="['/admin']">admin</a>
-              <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
-            </div>
-          </li>
-        </ul>
-      </links>
-      <!-- Collapsible content -->
-    </div>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+        </li>
+        <li class="nav-item avatar dropdown" dropdown *ngIf="user">
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            {{user.fullname}}
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['admin', 'admin']">{{user.fullname}}
+              profile</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="user && user.isAdmin"
+              [routerLink]="['/admin']">admin</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
+          </div>
+        </li>
+      </ul>
+    </links>
   </mdb-navbar>
-  <!--/.Navbar-->
+  <!-- Main -->
+  <div class="view">
+    <div class="full-bg-img">
+      <div class="mask rgba-black-light flex-center">
+        <div class="container text-center white-text">
+          <div class="white-text text-center wow fadeInUp">
+            <h2>欢迎光临LORENZO的个人网站</h2>
+            <h5>IT全栈工程师</h5>
+            <br>
+            <p>强健的身体安放有趣的灵魂</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.Main -->
+</header>
+<header *ngIf='url!="/home"'>
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light scrolling-navbar intro-fixed-nav"
+    [containerInside]="false">
+    <mdb-navbar-brand>
+      <a class="logo navbar-brand" href="#"></a>
+    </mdb-navbar-brand>
+    <links>
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/home']">主页</a>
+        </li>
+        <li class="nav-item mx-2 d-none">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'skill'}"
+            queryParamsHandling="merge">技术</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']"
+            [queryParams]="{blogType: 'document'}" queryParamsHandling="merge">文档</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'note'}"
+            queryParamsHandling="merge">日志</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">联系我</a>
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown mx-2" dropdown *ngIf="user">
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+            mdbWavesEffect>配置<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/cfgs']">配置</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/comments']">评论</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/feedback']">网站留言</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+          </div>
+        </li>
+
+      </ul>
+      <!-- Links -->
+
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+        </li>
+        <li class="nav-item avatar dropdown" dropdown *ngIf="user">
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            {{user.fullname}}
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['admin', 'admin']">{{user.fullname}}
+              profile</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="user && user.isAdmin"
+              [routerLink]="['/admin']">admin</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
+          </div>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
 </header>

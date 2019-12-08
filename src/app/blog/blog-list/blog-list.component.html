@@ -4,77 +4,46 @@
   </div>
   <!-- Section: Blog v.4 -->
   <section class="my-5">
-    <div *ngFor="let blog of blogs$ | async">
+    <div *ngFor="let blog of blogs$ | async" class="bg-white px-3 py-3 my-4 z-depth-1-half">
       <!-- Grid row -->
       <div class="row">
-
         <!-- Grid column -->
-        <div class="col-md-12">
-
-          <!-- Card -->
-          <div class="card card-cascade wider reverse">
-
-            <!-- Card image -->
-            <div class="view view-cascade overlay">
-              <img class="card-img-top"
-                src="{{blog.bannerUrl || 'https://mdbootstrap.com/img/Photos/Slides/img%20(142).jpg'}}"
-                alt="Sample image">
-              <a [routerLink]="['/blogs', blog._id]">
-                <div class="mask rgba-white-slight"></div>
-              </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body card-body-cascade text-center">
-
-              <!-- Title -->
-              <h2 class="font-weight-bold"><a>{{blog.title}}</a></h2>
-              <!-- Data -->
-              <p>Written in <a><strong>{{(blog.blogType || '') | blogType}}</strong></a>,
-                {{blog.createdAt | date:"yyyy-MM-dd"}}</p>
-              <!-- Social shares -->
-              <div class="social-counters" *ngIf="user">
-                <!-- Facebook -->
-                <a class="btn btn-fb bg-purple-400">
-                  <i class="far fa-eye pr-2"></i>
-                  <span class="clearfix d-none d-md-inline-block">阅读数(46)</span>
-                </a>
-                <!-- Comments -->
-                <a class="btn btn-default">
-                  <i class="far fa-comments pr-2"></i>
-                  <span class="clearfix d-none d-md-inline-block">评论数(18)</span>
-                </a>
-                <!-- Twitter -->
-                <a class="btn btn-tw bg-green-400 color-white" [routerLink]="['/blogs', blog._id, 'edit']">
-                  <i class="far fa-edit pr-2"></i>
-                  <span class="clearfix d-none d-md-inline-block">编辑(22)</span>
-                </a>
-                <!-- Google+ -->
-                <a class="btn btn-gplus bg-red-400" (click)="deleteBlog(blog._id)">
-                  <i class="far fa-trash-alt pr-2"></i>
-                  <span class="clearfix d-none d-md-inline-block">删除</span>
-                </a>
-              </div>
-              <!-- Social shares -->
-
-            </div>
-            <!-- Card content -->
-
-          </div>
-          <!-- Card -->
-
+        <div class="col-lg-7 col-xl-8">
+          <!-- Post title -->
+          <h5 class="font-weight-bold mb-3"><a [routerLink]="['/blogs', blog._id]">{{blog.title}}</a></h5>
           <!-- Excerpt -->
-          <div class="mt-5">
-            {{ blog.content.slice(0,200) }}
+          <p class="dark-grey-text">{{ blog.content.slice(0,200) }}</p>
+          <!-- Post data -->
+          <p>by <a class="font-weight-bold">{{(blog.blogType || '') | blogType}}</a>,
+            {{blog.createdAt | date:"yyyy-MM-dd"}}</p>
+          <!-- Read more button -->
+          <div class="social-counters" *ngIf="user">
+            <a class="btn btn-tw bg-green-400 color-white" [routerLink]="['/blogs', blog._id, 'edit']">
+              <i class="far fa-edit pr-2"></i>
+              <span class="clearfix d-none d-md-inline-block">编辑(22)</span>
+            </a>
+            <!-- Google+ -->
+            <a class="btn btn-gplus bg-red-400" (click)="deleteBlog(blog._id)">
+              <i class="far fa-trash-alt pr-2"></i>
+              <span class="clearfix d-none d-md-inline-block">删除</span>
+            </a>
           </div>
-
         </div>
         <!-- Grid column -->
-
+        <!-- Grid column -->
+        <div class="col-lg-5 col-xl-4">
+          <!-- Featured image -->
+          <div class="view overlay rounded mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+            <img class="img-fluid"
+              src="{{blog.bannerUrl || 'https://mdbootstrap.com/img/Photos/Slides/img%20(142).jpg'}}" alt="image">
+            <a [routerLink]="['/blogs', blog._id]">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+        </div>
+        <!-- Grid column -->
       </div>
       <!-- Grid row -->
-
-      <hr class="mb-5 mt-4">
     </div>
   </section>
   <!-- Section: Blog v.4 -->

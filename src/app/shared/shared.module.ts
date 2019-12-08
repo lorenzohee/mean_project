@@ -28,6 +28,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { EditorMdDirective } from './editor/editor-md.directive';
 import { CommentComponent } from './comment/comment/comment.component';
 import { CommentItemComponent } from './comment/comment-item/comment-item.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
@@ -80,9 +81,10 @@ import { CommentItemComponent } from './comment/comment-item/comment-item.compon
     MDBBootstrapModule,
     PaginationComponent,
     EditorMdDirective,
+    SidebarComponent,
     CommentComponent, CommentItemComponent
   ],
   declarations: [
-    EditorMdDirective, PaginationComponent, CommentComponent, CommentItemComponent]
+    EditorMdDirective, PaginationComponent, CommentComponent, CommentItemComponent, SidebarComponent]
 })
 export class SharedModule { }

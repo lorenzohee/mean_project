@@ -4,7 +4,7 @@
   </div>
   <!-- Section: Blog v.4 -->
   <section class="my-5">
-    <table class="table table-hover" mdbTable>
+    <table mdbTable responsive="true" hover="true">
       <thead>
         <th>id</th>
         <th>key</th>
@@ -25,7 +25,8 @@
           <td>
             <button type="button" mdbBtn color="info" mdbWavesEffect class="btn-sm"
               [routerLink]="['/cfgs', cfg._id, 'edit']">编辑</button>
-            <button type="button" mdbBtn color="warn" mdbWavesEffect [routerLink]="['new']" class="btn-sm">删除</button>
+            <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="deleteCfg(cfg._id)"
+              class="btn-sm">删除</button>
           </td>
         </tr>
       </tbody>

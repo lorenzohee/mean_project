@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Comment } from '../comment';
+import { Comment } from '../../../comments/comment';
 
 @Component({
   selector: 'app-comment-item',
@@ -9,7 +9,7 @@ import { Comment } from '../comment';
 export class CommentItemComponent implements OnInit {
 
   @Input()
-  comments: Comment[]
+  comments: Comment
 
   @Output()
   OnDelete: EventEmitter<Comment> = new EventEmitter();

@@ -4,6 +4,7 @@ import { BlogService } from '../blog.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { EditorConfig } from '../../shared/editor/model/editor-config';
+import { CfgService } from '../../cfg/cfg.service';
 
 @Component({
   selector: 'app-blog-form',
@@ -20,12 +21,18 @@ export class BlogFormComponent implements OnInit {
     blogType: ['', Validators.required],
     fileToUpload: ['', Validators.required],
     blogAccess: ['', Validators.required],
+    tags: [''],
     bannerUrl: ['']
   })
-  constructor(private fb: FormBuilder, private blogService: BlogService, private router: Router, private route: ActivatedRoute, private location: Location) { }
+
+  blogTypes: any;
+  blogTags: any;
+  constructor(private fb: FormBuilder, private blogService: BlogService, private router: Router, private route: ActivatedRoute, private location: Location, private cfgService: CfgService) { }
 
   ngOnInit() {
-    this.getBlogById()
+    this.getBlogById();
+    this.getBlogType();
+    this.getBlogTags();
   }
 
   onSubmit() {
@@ -58,6 +65,7 @@ export class BlogFormComponent implements OnInit {
           blogType: ['', Validators.required],
           blogAccess: ['', Validators.required],
           fileToUpload: [''],
+          tags: [''],
           bannerUrl: ['']
         })
         this.blogForm.patchValue({
@@ -66,10 +74,23 @@ export class BlogFormComponent implements OnInit {
           content: res.content,
           blogAccess: res.blogAccess,
           blogType: res.blogType,
+          tags: res.tags,
           bannerUrl: res.bannerUrl
         })
       })
     }
+  }
+
+  getBlogType() {
+    this.cfgService.getCfgList({ page: 1, key: 'ARTICLE_TYPE' }).subscribe(res => {
+      this.blogTypes = JSON.parse(res[0].valu)
+    })
+  }
+
+  getBlogTags() {
+    this.cfgService.getCfgList({ page: 1, key: 'ARTICLE_TAG' }).subscribe(res => {
+      this.blogTags = JSON.parse(res[0].valu)
+    })
   }
 
   goback() {
