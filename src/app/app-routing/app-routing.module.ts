@@ -36,8 +36,7 @@ const routes: Routes = [{
   loadChildren: () => import('../dashboard/dashboard.module').then(mod => mod.DashboardModule)
 }, {
   path: '',
-  redirectTo: '/home',
-  pathMatch: 'full'
+  component: HomeComponent
 }, {
   path: '**',
   component: PageNotFoundComponent
