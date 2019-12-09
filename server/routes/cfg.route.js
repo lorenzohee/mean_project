@@ -7,7 +7,7 @@ const router = express.Router();
 module.exports = router;
 
 router.post('/', passport.authenticate('jwt', { session: false }), insert);
-router.get('/', passport.authenticate('jwt', { session: false }), index);
+router.get('/', index);
 router.put('/:id', passport.authenticate('jwt', { session: false }), update);
 router.get('/:id', passport.authenticate('jwt', { session: false }), detail);
 router.delete('/:id', passport.authenticate('jwt', { session: false }), destroy);

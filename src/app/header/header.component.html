@@ -1,4 +1,4 @@
-<header class="h-100" *ngIf='url=="/home"'>
+<header class="h-100" *ngIf='url=="/home" || url==""'>
   <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar intro-fixed-nav"
     [containerInside]="false">
     <mdb-navbar-brand>
@@ -13,17 +13,9 @@
         <li class="nav-item mx-2 d-none">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'skill'}"
-            queryParamsHandling="merge">技术</a>
-        </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']"
-            [queryParams]="{blogType: 'document'}" queryParamsHandling="merge">文档</a>
-        </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'note'}"
-            queryParamsHandling="merge">日志</a>
+        <li class="nav-item mx-2" *ngFor="let type of blogTypes">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: type.key}"
+            queryParamsHandling="merge">{{type.title}}</a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
@@ -98,17 +90,9 @@
         <li class="nav-item mx-2 d-none">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'skill'}"
-            queryParamsHandling="merge">技术</a>
-        </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']"
-            [queryParams]="{blogType: 'document'}" queryParamsHandling="merge">文档</a>
-        </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: 'note'}"
-            queryParamsHandling="merge">日志</a>
+        <li class="nav-item mx-2" *ngFor="let type of blogTypes">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: type.key}"
+            queryParamsHandling="merge">{{type.title}}</a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
