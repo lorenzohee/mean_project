@@ -1,3 +1,6 @@
+// These are important and needed before anything else, for SSR
+require('zone.js/dist/zone-node');
+require('reflect-metadata');
 // config should be imported before importing any other file
 const config = require('./config/config');
 const app = require('./config/express');

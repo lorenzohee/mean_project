@@ -9,27 +9,35 @@ export class TokenStorage {
   constructor() { }
 
   signOut() {
-    window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.clear();
+    this.validLocalStorage().removeItem(TOKEN_KEY);
+    this.validLocalStorage().clear();
   }
 
   public saveToken(token: string) {
     if (!token) return;
-    window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.setItem(TOKEN_KEY, token);
+    this.validLocalStorage().removeItem(TOKEN_KEY);
+    this.validLocalStorage().setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string {
-    return localStorage.getItem(TOKEN_KEY);
+    return this.validLocalStorage().getItem(TOKEN_KEY);
   }
 
   public saveStorage(key: string, val: string) {
     if (!key) return;
-    window.localStorage.setItem(key, val);
+    this.validLocalStorage().setItem(key, val);
   }
 
   public getStorage(key: string) {
     if (!key) return;
-    return window.localStorage.getItem(key)
+    return this.validLocalStorage().getItem(key)
+  }
+
+  public validLocalStorage() {
+    if (typeof window !== 'undefined') {
+      return window.localStorage
+    } else {
+      return { getItem(key) { return null }, removeItem(str) { }, clear() { }, setItem(key, val) { }, }
+    }
   }
 }

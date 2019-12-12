@@ -16,6 +16,13 @@ const passport = require('./passport')
 var fs = require('fs');//文件模块
 var FileStreamRotator = require('file-stream-rotator');
 
+
+const { enableProdMode } = require('@angular/core');
+
+// Faster server renders w/ Prod mode (dev mode never needed)
+enableProdMode();
+
+
 const app = express();
 
 //add monitor
@@ -44,6 +51,7 @@ if (config.env === 'development') {
   // 使用自定义的format
   app.use(logger('joke'));
 }
+
 app.use(logger('combined', { stream: accessLogStream }));//写入日志文件
 
 // Choose what fronten framework to serve the dist from
@@ -54,15 +62,42 @@ if (config.frontend == 'react') {
   distDir = '../../dist/';
 }
 
+
+
+//SSR 服务端渲染
+// * NOTE :: leave this as require() since this file is built Dynamically from webpack
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/server/main');
+
+// Express Engine
+const { ngExpressEngine } = require('@nguniversal/express-engine');
+// Import module map for lazy loading
+const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
+
+app.engine('html', ngExpressEngine({
+  bootstrap: AppServerModuleNgFactory,
+  providers: [
+    provideModuleMap(LAZY_MODULE_MAP)
+  ]
+}));
+app.set('view engine', 'html');
+app.set('views', path.join(process.cwd(), 'dist'));
+
+
+
+
+
 // 
 app.use(express.static(path.join(__dirname, distDir)))
 app.use(express.static(path.join(__dirname, '../../uploads')))
 app.use(express.static(path.join(__dirname, '../../audio')))
 app.use(express.static(path.join(__dirname, '../../vendor')))
 app.use(/^((?!(api)).)*/, (req, res) => {
-  res.sendFile(path.join(__dirname, distDir + '/index.html'));
+  // res.sendFile(path.join(__dirname, distDir + '/index.html'));
+  res.render('index', { req });
 });
-
+// app.get('*', (req, res) => {
+//   res.render('index', { req });
+// });
 //React server
 // app.use(express.static(path.join(__dirname, '../../node_modules/material-dashboard-react/dist')))
 // app.use(/^((?!(api)).)*/, (req, res) => {

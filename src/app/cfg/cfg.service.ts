@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable, Inject, PLATFORM_ID, APP_ID } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cfg } from './cfg';
 import { TokenStorage } from '../auth/token.storage';
+import { catchError } from 'rxjs/operators';
+import { BaseService } from '../base.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,32 +13,36 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class CfgService {
+export class CfgService extends BaseService {
 
   constructor(
+    @Inject(PLATFORM_ID) platformId: Object,
+    @Inject(APP_ID) appId: string,
     private httpClient: HttpClient,
     private token: TokenStorage
   ) {
+    super(platformId, appId);
     const tokenVal = this.token.getToken();
   }
-
 
   getCfgList(obj): Observable<Cfg[]> {
     let params = new HttpParams().set('page', obj.page || '1')
     if (obj.key) {
       params = params.set('key', obj.key)
     }
-    return this.httpClient.get<Cfg[]>(`/api/cfgs`, Object.assign({ params }, httpOptions));
+    return this.httpClient.get<Cfg[]>(`${this.serviceAdd}api/cfgs`, Object.assign({ params }, httpOptions)).pipe(
+      catchError(this.handleError)
+    );
   }
 
   getCfgCount(obj): Observable<string> {
     let params = new HttpParams().set('count', 'true')
-    return this.httpClient.get<string>(`/api/cfgs`, Object.assign({ params }, httpOptions));
+    return this.httpClient.get<string>(`${this.serviceAdd}api/cfgs`, Object.assign({ params }, httpOptions));
   }
 
   getCfgById(id: string): Observable<Cfg> {
     if (id) {
-      return this.httpClient.get<Cfg>(`/api/cfgs/${id}`, httpOptions);
+      return this.httpClient.get<Cfg>(`${this.serviceAdd}api/cfgs/${id}`, httpOptions);
     } else {
       return new Observable();
     }
@@ -45,18 +51,18 @@ export class CfgService {
   createCfg(form: Cfg): Observable<Cfg> {
     const tokenVal = this.token.getToken();
     if (!tokenVal) return Observable.create(observer => { observer.complete(); })
-    return this.httpClient.post<Cfg>(`/api/cfgs`, form, httpOptions);
+    return this.httpClient.post<Cfg>(`${this.serviceAdd}api/cfgs`, form, httpOptions);
   }
 
   updateCfg(form: Cfg, id: string): Observable<Cfg> {
     const tokenVal = this.token.getToken();
     if (!tokenVal) return Observable.create(observer => { observer.complete(); })
-    return this.httpClient.put<Cfg>(`/api/cfgs/${id}`, form, httpOptions);
+    return this.httpClient.put<Cfg>(`${this.serviceAdd}api/cfgs/${id}`, form, httpOptions);
   }
 
   deleteCfgById(id: string): Observable<Cfg> {
     const tokenVal = this.token.getToken();
     if (!tokenVal) return Observable.create(observer => { observer.complete(); })
-    return this.httpClient.delete<Cfg>(`/api/cfgs/${id}`, httpOptions);
+    return this.httpClient.delete<Cfg>(`${this.serviceAdd}api/cfgs/${id}`, httpOptions);
   }
 }

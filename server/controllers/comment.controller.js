@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const Comment = require('../models/comment.model');
 const config = require('../config/config')
