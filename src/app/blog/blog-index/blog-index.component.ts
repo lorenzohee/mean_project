@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
-  selector: 'app-blog-list',
-  templateUrl: './blog-list.component.html',
-  styleUrls: ['./blog-list.component.scss']
+  selector: 'app-blog-index',
+  templateUrl: './blog-index.component.html',
+  styleUrls: ['./blog-index.component.scss']
 })
-export class BlogListComponent implements OnInit {
+export class BlogIndexComponent implements OnInit {
 
   blogs$: Observable<Blog[]>
 
@@ -26,7 +26,8 @@ export class BlogListComponent implements OnInit {
       switchMap(params => {
         let listParam = {
           page: params.get('page') || 1,
-          blogType: params.get('blogType')
+          blogType: params.get('blogType'),
+          blogNum: 'all'
         }
         return this.blogService.getBlogList(listParam)
       })
@@ -34,7 +35,8 @@ export class BlogListComponent implements OnInit {
     this.blogCount$ = this.route.queryParamMap.pipe(
       switchMap(params => {
         let listParam = {
-          blogType: params.get('blogType')
+          blogType: params.get('blogType'),
+          blogNum: 'all'
         }
         return this.blogService.getBlogCount(listParam)
       })

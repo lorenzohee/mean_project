@@ -1,9 +1,5 @@
 # mean_project
 mean
-
-引入editor.md后css文件有错误
-css文件中在引入font文件时有一个...的路径导致编译不通过，这里建议先找到node_module/editormd/css/editormd.css文件中找到...改为..即可！
-
 # modify by below:
 
 ## Welcome to the mean stack

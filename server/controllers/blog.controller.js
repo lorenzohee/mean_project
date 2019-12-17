@@ -27,7 +27,15 @@ async function index (obj) {
     page = obj.page;
     delete obj.page
   }
-  let pageNum = config.paginationNum;
+  let pageNum = obj.pageNum || config.paginationNum;
+  if (obj.blogType === 'undefined') {
+    delete obj.blogType;
+  }
+  if (obj.blogNum) {
+    delete obj.blogNum;
+  } else {
+    obj.createdAt = { $lte: new Date() }
+  }
   if (obj.count) {
     delete obj.count
     return await Blog.find(obj).count();

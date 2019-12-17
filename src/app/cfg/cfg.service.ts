@@ -30,9 +30,7 @@ export class CfgService extends BaseService {
     if (obj.key) {
       params = params.set('key', obj.key)
     }
-    return this.httpClient.get<Cfg[]>(`${this.serviceAdd}api/cfgs`, Object.assign({ params }, httpOptions)).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient.get<Cfg[]>(`${this.serviceAdd}api/cfgs`, Object.assign({ params }, httpOptions));
   }
 
   getCfgCount(obj): Observable<string> {

@@ -15,10 +15,10 @@
       </mat-select>
     </div>
     <label for="form_content">文章内容</label>
-    <div class="md-form" id="md" appEditorMd [editormdConfig]="conf" (onEditorChange)="syncEditor($event)">
-      <textarea id="form_content" class="md-textarea md-textarea-auto form-control"
-        formControlName='content'></textarea>
+    <div class="md-form">
+      <editor id="form_content" formControlName='content' [init]="conf"></editor>
     </div>
+
     <label for="form_content">展示图片</label>
     <div class="md-form">
       <img *ngIf="blogForm.value.bannerUrl" [src]="blogForm.value.bannerUrl" class="pb-4" style="max-width: 100%">

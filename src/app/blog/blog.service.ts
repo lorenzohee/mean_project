@@ -25,12 +25,27 @@ export class BlogService extends BaseService {
   }
 
   getBlogList(obj): Observable<Blog[]> {
-    let params = new HttpParams().set('page', obj.get('page') || '1').set('blogType', obj.get('blogType'))
+    let params = new HttpParams().set('page', obj.page)
+    if (obj.blogType) {
+      params = params.set('blogType', obj.blogType)
+    }
+    if (obj.tags) {
+      params = params.set('tags', obj.tags)
+    }
+    if (obj.pageNum) {
+      params = params.set('pageNum', obj.pageNum)
+    }
+    if (obj.blogNum) {
+      params = params.set('blogNum', obj.blogNum)
+    }
     return this.httpClient.get<Blog[]>(`${this.serviceAdd}api/blogs`, Object.assign({ params }, httpOptions));
   }
 
   getBlogCount(obj): Observable<string> {
-    let params = new HttpParams().set('count', 'true').set('blogType', obj.get('blogType'))
+    let params = new HttpParams().set('count', 'true')
+    if (obj.blogType) {
+      params = params.set('blogType', obj.blogType)
+    }
     return this.httpClient.get<string>(`${this.serviceAdd}api/blogs`, Object.assign({ params }, httpOptions));
   }
 

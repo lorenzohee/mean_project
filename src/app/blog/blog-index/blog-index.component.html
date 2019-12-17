@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="text-center pt-4">
+    <button type="button" mdbBtn color="primary" mdbWavesEffect [routerLink]="['new']">创建BLOG</button>
+  </div>
+  <!-- Section: Blog v.4 -->
+  <section class="my-5">
+    <table mdbTable responsive="true" hover="true">
+      <thead>
+        <th>id</th>
+        <th>title</th>
+        <th>blogType</th>
+        <th>createdAt</th>
+        <th>tags</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blog of blogs$ | async">
+          <td>{{blog._id}}</td>
+          <td>{{blog.title}}</td>
+          <td>{{(blog.blogType || '') | blogType}}</td>
+          <td>{{blog.createdAt | date:"yyyy-MM-dd"}}</td>
+          <td>{{blog.tags}}</td>
+          <td>
+            <button type="button" mdbBtn color="info" mdbWavesEffect class="btn-sm"
+              [routerLink]="['/blogs', blog._id, 'edit']">编辑</button>
+            <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="deleteBlog(blog._id)"
+              class="btn-sm">删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <!-- Section: Blog v.4 -->
+  <app-pagination (OnChange)="changePage($event)" [total]="blogCount$ | async" *ngIf="blogCount$"></app-pagination>
+</div>

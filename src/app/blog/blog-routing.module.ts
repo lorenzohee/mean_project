@@ -3,10 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { BlogFormComponent } from './blog-form/blog-form.component';
+import { BlogIndexComponent } from './blog-index/blog-index.component';
 
 const routes: Routes = [{
   path: '',
   component: BlogListComponent
+}, {
+  path: 'index',
+  component: BlogIndexComponent
 }, {
   path: 'new',
   component: BlogFormComponent

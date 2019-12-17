@@ -62,29 +62,25 @@ if (config.frontend == 'react') {
   distDir = '../../dist/';
 }
 
+if (config.env !== 'development') {
+  //SSR 服务端渲染
+  // * NOTE :: leave this as require() since this file is built Dynamically from webpack
+  const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/server/main');
 
+  // Express Engine
+  const { ngExpressEngine } = require('@nguniversal/express-engine');
+  // Import module map for lazy loading
+  const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
 
-//SSR 服务端渲染
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/server/main');
-
-// Express Engine
-const { ngExpressEngine } = require('@nguniversal/express-engine');
-// Import module map for lazy loading
-const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
-
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
-  providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
-  ]
-}));
-app.set('view engine', 'html');
-app.set('views', path.join(process.cwd(), 'dist'));
-
-
-
-
+  app.engine('html', ngExpressEngine({
+    bootstrap: AppServerModuleNgFactory,
+    providers: [
+      provideModuleMap(LAZY_MODULE_MAP)
+    ]
+  }));
+  app.set('view engine', 'html');
+  app.set('views', path.join(process.cwd(), 'dist'));
+}
 
 // 
 app.use(express.static(path.join(__dirname, distDir)))
@@ -92,8 +88,12 @@ app.use(express.static(path.join(__dirname, '../../uploads')))
 app.use(express.static(path.join(__dirname, '../../audio')))
 app.use(express.static(path.join(__dirname, '../../vendor')))
 app.use(/^((?!(api)).)*/, (req, res) => {
+  if (config.env !== 'development') {
+    res.render('index', { req });
+  } else {
+    res.sendFile(path.join(__dirname, distDir + '/index.html'));
+  }
   // res.sendFile(path.join(__dirname, distDir + '/index.html'));
-  res.render('index', { req });
 });
 // app.get('*', (req, res) => {
 //   res.render('index', { req });

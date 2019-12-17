@@ -16,10 +16,10 @@ import { CatchErrorInterceptor } from './interceptors/http-error.interceptor';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TransferHttpCacheModule } from '@nguniversal/common';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [

@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { BlogService } from '../blog.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-import { EditorConfig } from '../../shared/editor/model/editor-config';
+import { EditorConfig } from '../../shared/editor/editor-config';
 import { CfgService } from '../../cfg/cfg.service';
 
 @Component({
@@ -97,10 +97,4 @@ export class BlogFormComponent implements OnInit {
     this.location.back()
   }
 
-  //同步markdown语句
-  syncEditor(str: string): void {
-    this.blogForm.patchValue({
-      content: str
-    })
-  }
 }

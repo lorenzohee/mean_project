@@ -29,7 +29,7 @@
             </span>
           </div>
         </header>
-        <div markdown class="grey-text" style="white-space: pre-line;">{{blog.content}}</div>
+        <div [innerHTML]="blog.content | htmlFormat "></div>
         <hr />
         <div class="pb-3">
           <i class="fas fa-tags grey-text"></i>
