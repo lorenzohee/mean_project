@@ -19,7 +19,7 @@ export class BlogFormComponent implements OnInit {
     title: ['', Validators.required],
     content: ['', Validators.required],
     blogType: ['', Validators.required],
-    fileToUpload: ['', Validators.required],
+    fileToUpload: [''],
     blogAccess: ['', Validators.required],
     tags: [''],
     bannerUrl: ['']

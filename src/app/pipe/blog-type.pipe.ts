@@ -20,6 +20,18 @@ export class BlogTypePipe implements PipeTransform {
       case 'recommand':
         tmp = '推荐';
         break;
+      case 'innovationMethod':
+        tmp = '创新方法论';
+        break;
+      case 'innovationTech':
+        tmp = '创新技术';
+        break;
+      case 'innovationThing':
+        tmp = '创新好物';
+        break;
+      case 'innovation':
+        tmp = '创新';
+        break;
       default:
         tmp = '无'
     }
