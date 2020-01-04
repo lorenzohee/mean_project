@@ -13,9 +13,14 @@
         <li class="nav-item mx-2 d-none">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
-        <li class="nav-item mx-2" *ngFor="let type of blogTypes">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: type.key}"
-            queryParamsHandling="merge">{{type.title}}</a>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']" [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']" [queryParams]="{blogType:'innovationTech'}">创新技术</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']" [queryParams]="{blogType:'innovationThing'}">创新好物</a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
@@ -90,9 +95,14 @@
         <li class="nav-item mx-2 d-none">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
-        <li class="nav-item mx-2" *ngFor="let type of blogTypes">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']" [queryParams]="{blogType: type.key}"
-            queryParamsHandling="merge">{{type.title}}</a>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']" [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']" [queryParams]="{blogType:'innovationTech'}">创新技术</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']" [queryParams]="{blogType:'innovationThing'}">创新好物</a>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>

@@ -17,10 +17,26 @@ var fs = require('fs');//文件模块
 var FileStreamRotator = require('file-stream-rotator');
 
 
-const { enableProdMode } = require('@angular/core');
+if (config.env !== 'development') {
+  const { enableProdMode } = require('@angular/core');
 
-// Faster server renders w/ Prod mode (dev mode never needed)
-enableProdMode();
+  // Faster server renders w/ Prod mode (dev mode never needed)
+  enableProdMode();
+
+  const domino = require('domino');
+  const templateA = fs.readFileSync(path.join('dist', 'index.html')).toString();
+  const win = domino.createWindow(templateA);
+  win.Object = Object;
+  win.Math = Math;
+  win.localStorage = {
+    //mock browser localstorage
+    getItem(key) { return null }, removeItem(str) { }, clear() { }, setItem(key, val) { }
+  }
+  global['window'] = win;
+  global['document'] = win.document;
+  global['branch'] = null;
+  global['object'] = win.object;
+}
 
 
 const app = express();

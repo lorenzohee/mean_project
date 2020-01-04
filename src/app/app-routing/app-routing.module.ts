@@ -17,6 +17,15 @@ const routes: Routes = [{
   path: 'blogs',
   loadChildren: () => import('../blog/blog.module').then(mod => mod.BlogModule)
 }, {
+  path: 'method',
+  loadChildren: () => import('../blog/blog.module').then(mod => mod.BlogModule)
+}, {
+  path: 'tech',
+  loadChildren: () => import('../blog/blog.module').then(mod => mod.BlogModule)
+}, {
+  path: 'things',
+  loadChildren: () => import('../blog/blog.module').then(mod => mod.BlogModule)
+}, {
   path: 'cfgs',
   loadChildren: () => import('../cfg/cfg.module').then(mod => mod.CfgModule)
 }, {

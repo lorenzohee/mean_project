@@ -46,4 +46,8 @@ export class BlogDetailComponent implements OnInit {
       })
     }
   }
+
+  scrollTop() {
+    window.scrollTo(0, 0);
+  }
 }
