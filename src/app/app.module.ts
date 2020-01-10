@@ -20,6 +20,8 @@ import { MarkdownModule } from 'ngx-markdown';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { HomeComponent } from './home/home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { HomeComponent } from './home/home.component';
     AdminModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
