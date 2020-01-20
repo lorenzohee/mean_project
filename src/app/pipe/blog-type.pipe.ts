@@ -32,6 +32,9 @@ export class BlogTypePipe implements PipeTransform {
       case 'innovation':
         tmp = '创新';
         break;
+      case 'translation':
+        tmp = '翻译';
+        break;
       default:
         tmp = '无'
     }

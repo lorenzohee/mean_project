@@ -23,7 +23,8 @@
       <!-- Post data -->
       <p>{{blog.createdAt | date:"yyyy-MM-dd"}}</p>
       <!-- Excerpt -->
-      <p class=" dark-grey-text">{{blog.content | htmlFormat:'nohtml' | slice:0:100}}</p>
+      <p class="dark-grey-text" style="height: 70px; overflow:hidden">
+        {{blog.content | htmlFormat:'nohtml' | slice:0:100}}</p>
       <!-- Read more button -->
       <a [routerLink]="['/blogs', blog._id]" mdbBtn color="deep-orange" rounded="true" mdbWavesEffect>查看更多</a>
 

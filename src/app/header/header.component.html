@@ -14,16 +14,24 @@
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']" [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']"
+            [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']" [queryParams]="{blogType:'innovationTech'}">创新技术</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']"
+            [queryParams]="{blogType:'innovationTech'}">创新技术</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']" [queryParams]="{blogType:'innovationThing'}">创新好物</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']"
+            [queryParams]="{blogType:'innovationThing'}">创新好物</a>
         </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown mx-2" dropdown *ngIf="user">
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+            mdbWavesEffect>实用小工具<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+          </div>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">联系我</a>
@@ -96,16 +104,24 @@
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']" [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']"
+            [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']" [queryParams]="{blogType:'innovationTech'}">创新技术</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']"
+            [queryParams]="{blogType:'innovationTech'}">创新技术</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']" [queryParams]="{blogType:'innovationThing'}">创新好物</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']"
+            [queryParams]="{blogType:'innovationThing'}">创新好物</a>
         </li>
-        <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown mx-2" dropdown *ngIf="user">
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+            mdbWavesEffect>实用小工具<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/intelligenceAudio']">语音文字转换</a>
+          </div>
         </li>
         <li class="nav-item mx-2">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/about']">联系我</a>
