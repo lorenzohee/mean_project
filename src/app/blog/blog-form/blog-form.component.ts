@@ -15,14 +15,17 @@ export class BlogFormComponent implements OnInit {
 
   conf = new EditorConfig();
 
+  uploadFile = '';
+
   blogForm = this.fb.group({
+    _id: [''],
     title: ['', Validators.required],
     content: ['', Validators.required],
     blogType: ['', Validators.required],
-    fileToUpload: [''],
     blogAccess: ['', Validators.required],
     tags: [''],
-    bannerUrl: ['']
+    bannerUrl: [''],
+    createdAt: [new Date(), Validators.required]
   })
 
   blogTypes: any;
@@ -36,12 +39,12 @@ export class BlogFormComponent implements OnInit {
   }
 
   onSubmit() {
-    delete this.blogForm.value.fileToUpload
-    if (this.blogForm.value._id) {
+    if (this.blogForm.value._id != '') {
       this.blogService.updateBlog(this.blogForm.value, this.blogForm.value._id).subscribe(res => {
         this.router.navigate([`/blogs/${res._id}`]);
       })
     } else {
+      delete this.blogForm.value._id
       this.blogService.createBlog(this.blogForm.value).subscribe(res => {
         this.router.navigate([`/blogs/${res._id}`]);
       })
@@ -50,7 +53,28 @@ export class BlogFormComponent implements OnInit {
 
   handleFileInput(files: FileList) {
     this.blogService.postBannerFile(files.item(0)).subscribe(res => {
-      this.blogForm.patchValue({ bannerUrl: res.filename })
+      if (res.filename) {
+        if (confirm('需要替代展示图片吗？')) {
+          this.blogForm.patchValue({
+            bannerUrl: `/${res.filename}`
+          })
+        } else {
+          let selBox = document.createElement('textarea');
+          selBox.style.position = 'fixed';
+          selBox.style.left = '0';
+          selBox.style.top = '0';
+          selBox.style.opacity = '0';
+          selBox.value = res.filename;
+          document.body.appendChild(selBox);
+          selBox.focus();
+          selBox.select();
+          document.execCommand('copy');
+          document.body.removeChild(selBox);
+          alert(`图片上传地址为：/${res.filename}, 已复制到粘贴板`)
+        }
+      } else {
+        alert('格式不正确或服务器错误，请重试')
+      }
     })
   }
 
@@ -58,16 +82,6 @@ export class BlogFormComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.blogService.getBlogById(id).subscribe(res => {
-        this.blogForm = this.fb.group({
-          _id: [''],
-          title: ['', Validators.required],
-          content: ['', Validators.required],
-          blogType: ['', Validators.required],
-          blogAccess: ['', Validators.required],
-          fileToUpload: [''],
-          tags: [''],
-          bannerUrl: ['']
-        })
         this.blogForm.patchValue({
           _id: res._id,
           title: res.title,
@@ -75,7 +89,8 @@ export class BlogFormComponent implements OnInit {
           blogAccess: res.blogAccess,
           blogType: res.blogType,
           tags: res.tags,
-          bannerUrl: res.bannerUrl
+          bannerUrl: res.bannerUrl,
+          createdAt: res.createdAt
         })
       })
     }

@@ -1,6 +1,6 @@
 export class EditorConfig {
   height = 500;
-  menubar = false;
+  menubar = true;
   plugins = [
     'advlist autolink lists link image charmap print preview anchor',
     'searchreplace visualblocks code fullscreen',

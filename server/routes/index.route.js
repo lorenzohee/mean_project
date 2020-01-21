@@ -14,7 +14,7 @@ router.get('/health-check', (req, res) =>
   res.send('OK')
 );
 router.use('*', (req, res, next) => {
-  console.log(`@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@headers:${JSON.stringify(req.headers)}`);
+  // console.log(`@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@headers:${JSON.stringify(req.headers)}`);
   next();
 })
 

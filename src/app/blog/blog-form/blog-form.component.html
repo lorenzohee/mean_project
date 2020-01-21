@@ -18,22 +18,32 @@
     <div class="md-form">
       <editor id="form_content" formControlName='content' [init]="conf"></editor>
     </div>
-
-    <label for="form_content">展示图片</label>
+    <img *ngIf="blogForm.value.bannerUrl" [src]="blogForm.value.bannerUrl" class="pb-4"
+      style="max-width: 100%;max-height: 150px;">
     <div class="md-form">
-      <img *ngIf="blogForm.value.bannerUrl" [src]="blogForm.value.bannerUrl" class="pb-4" style="max-width: 100%">
-      <input type="hidden" formControlName='bannerUrl'>
-      <input type="file" id="form_file" class="md-file form-control" formControlName='fileToUpload'
-        (change)="handleFileInput($event.target.files)" accept="image/*">
-      <label for="form_file"></label>
+      <input type="text" id="form_banner" formControlName='bannerUrl' class="form-control" mdbInput>
+      <label for="form_banner">展示图片</label>
     </div>
-    <div class="md-form">
-      <mat-select placeholder="请选择隐私类型" formControlName='blogAccess'>
-        <mat-option value="public">公开</mat-option>
-        <mat-option value="private">私密</mat-option>
-      </mat-select>
+    <div class="md-form row">
+      <div class="col-md-6">
+        <mat-select placeholder="请选择隐私类型" formControlName='blogAccess'>
+          <mat-option value="public">公开</mat-option>
+          <mat-option value="private">私密</mat-option>
+        </mat-select>
+      </div>
+      <div class="col-md-6">
+        <input type="text" mdbInput [matDatepicker]="picker" placeholder="选择发布时间" formControlName='createdAt'>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </div>
     </div>
-    <button mdbBtn color="info" class="my-4" type="submit" [disabled]='!blogForm.valid'>Submit</button>
-    <button mdbBtn color="light" class="my-4 mx-4" type="button" (click)="goback()">Go Back</button>
+    <button mdbBtn color="info" class="my-4" type="submit" [disabled]='!blogForm.valid'>提交</button>
+    <button mdbBtn color="light" class="my-4 mx-4" type="button" (click)="goback()">返回</button>
   </form>
 </div>
+
+<button mat-fab color="primary" class="scrollBtn" style="right:35px; bottom:35px;position: fixed; z-index: 9999">
+  <mdb-icon fas icon="file-upload fa-lg"></mdb-icon>
+  <input type="file" id="form_file" style="position: absolute;left: 0;top: 0;width: 56px;height: 56px;opacity: 0"
+    [(ngModel)]="uploadFile" (change)="handleFileInput($event.target.files)" accept="image/*">
+</button>

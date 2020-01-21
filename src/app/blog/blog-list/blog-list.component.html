@@ -9,22 +9,10 @@
           <!-- Post title -->
           <h5 class="font-weight-bold mb-3"><a [routerLink]="['/blogs', blog._id]">{{blog.title}}</a></h5>
           <!-- Excerpt -->
-          <p class="dark-grey-text">{{ blog.content | htmlFormat:'nohtml' | slice:0:200 }}</p>
+          <p class="dark-grey-text">{{ blog.content | htmlFormat:'nohtml' | slice:0:300 }}</p>
           <!-- Post data -->
           <p><a class="font-weight-bold">{{(blog.blogType || '') | blogType}}</a>,
             {{blog.createdAt | date:"yyyy-MM-dd"}}</p>
-          <!-- Read more button -->
-          <div class="social-counters" *ngIf="user">
-            <a class="btn btn-tw bg-green-400 color-white" [routerLink]="['/blogs', blog._id, 'edit']">
-              <i class="far fa-edit pr-2"></i>
-              <span class="clearfix d-none d-md-inline-block">编辑(22)</span>
-            </a>
-            <!-- Google+ -->
-            <a class="btn btn-gplus bg-red-400" (click)="deleteBlog(blog._id)">
-              <i class="far fa-trash-alt pr-2"></i>
-              <span class="clearfix d-none d-md-inline-block">删除</span>
-            </a>
-          </div>
         </div>
         <!-- Grid column -->
         <!-- Grid column -->

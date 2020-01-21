@@ -12,7 +12,17 @@ var storage = multer.diskStorage({
   }
 })
 
-var upload = multer({ storage: storage })
+var upload = multer({
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+    // 限制文件上传类型，仅可上传png格式图片
+    if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/gif') {
+      cb(null, true)
+    } else {
+      cb(null, false)
+    }
+  }
+})
 
 const router = express.Router();
 module.exports = router;
@@ -51,5 +61,6 @@ async function destroy (req, res) {
 
 async function postBanner (req, res) {
   var file = req.file;
+  console.log('testxxx' + JSON.stringify(req.file))
   res.json(file)
 }

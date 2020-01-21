@@ -8,7 +8,8 @@ const blogSchema = Joi.object({
   blogType: Joi.string().required(),
   bannerUrl: Joi.any(),
   blogAccess: Joi.string().required(),
-  tags: Joi.array()
+  tags: Joi.array(),
+  createdAt: Joi.any()
 })
 
 

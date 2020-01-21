@@ -1,131 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!--
- created with Free Online Sitemap Generator www.xml-sitemaps.com 
--->
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
-  <loc>http://yongqinghee.cf/</loc>
-  <lastmod>2019-12-19T08:58:33+00:00</lastmod>
+  <loc>https://innovationroad.site/</loc>
+  <lastmod>2020-01-10T07:19:30+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
-<loc>http://yongqinghee.cf/blogs</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>1.00</priority>
+  <loc>https://innovationroad.site/method?blogType=innovationMethod</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>http://yongqinghee.cf/home</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/tech?blogType=innovationTech</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs?blogType=innovationMethod
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs?blogType=innovationTech
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/auth/login</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs?blogType=innovationThing
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/home</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>http://yongqinghee.cf/intelligenceAudio</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/things?blogType=innovationThing</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>http://yongqinghee.cf/about</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/intelligenceAudio</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5dfe3c0fbe0f70228053096a
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/about</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5dfe3789be0f702280530969
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5e117cd62a25136268033209</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5dfb81d3be0f702280530967
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5e01cc64be0f70228053096b</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5dfa2cdabe0f702280530966
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5dfe3789be0f702280530969</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5dfa217bbe0f702280530965
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5dfb81d3be0f702280530967</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5df9827cbe0f702280530964
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5dfa217bbe0f702280530965</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5df97ba4be0f702280530963
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5dee4c7ceaa022526ab7959b</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5df8d116be0f702280530962
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5e26525ab49aa92bb46462f5</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5dee4c7ceaa022526ab7959b
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5e17e1e42a2513626803320c</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>
-http://yongqinghee.cf/blogs/5dee0d9d54b4644b289b1bc1
-</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5e17e1502a2513626803320b</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>http://yongqinghee.cf/auth/login</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://innovationroad.site/blogs/5e17e1042a2513626803320a</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>http://yongqinghee.cf/auth/register</loc>
-<lastmod>2019-12-24T02:23:53+00:00</lastmod>
-<priority>0.64</priority>
+  <loc>https://innovationroad.site/blogs/5e117c182a25136268033208</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e11797e2a25136268033206</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0e99d463e9a327721114b6</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0e99a163e9a327721114b5</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0e942463e9a327721114b3</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0c65cf63e9a327721114b2</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e17e3882a2513626803320d</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e117b092a25136268033207</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/auth/register</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0e964863e9a327721114b4</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0c652263e9a327721114b1</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0c4a4d63e9a327721114b0</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e0961abbe0f702280530975</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e09615bbe0f702280530974</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e095f05be0f702280530972</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e095bf5be0f702280530971</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://innovationroad.site/blogs/5e047515be0f702280530970</loc>
+  <lastmod>2020-01-21T07:26:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
 </urlset>

@@ -13,15 +13,18 @@ import { CommentComponent } from '../shared/comment/comment/comment.component';
 import { CommentItemComponent } from '../shared/comment/comment-item/comment-item.component';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { BlogIndexComponent } from './blog-index/blog-index.component';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     BlogRoutingModule,
     SharedModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     EditorModule
   ],
-  providers: [BlogTypePipe],
+  providers: [MatDatepickerModule, BlogTypePipe],
   declarations: [BlogListComponent, BlogDetailComponent, BlogFormComponent, BlogTypePipe,
     CommentComponent, CommentItemComponent, SidebarComponent, BlogIndexComponent]
 })
