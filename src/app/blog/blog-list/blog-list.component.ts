@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../blog.service';
 import { Blog } from '../blog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 

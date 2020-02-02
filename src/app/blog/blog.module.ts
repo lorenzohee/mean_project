@@ -14,6 +14,7 @@ import { CommentItemComponent } from '../shared/comment/comment-item/comment-ite
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { BlogIndexComponent } from './blog-index/blog-index.component';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { BlogService } from './blog.service';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
     MatNativeDateModule,
     EditorModule
   ],
-  providers: [MatDatepickerModule, BlogTypePipe],
+  providers: [MatDatepickerModule, BlogTypePipe, BlogService],
   declarations: [BlogListComponent, BlogDetailComponent, BlogFormComponent, BlogTypePipe,
     CommentComponent, CommentItemComponent, SidebarComponent, BlogIndexComponent]
 })

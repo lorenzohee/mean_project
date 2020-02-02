@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 import { EditorConfig } from '../../shared/editor/editor-config';
 import { CfgService } from '../../cfg/cfg.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-blog-form',
@@ -39,12 +40,11 @@ export class BlogFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.blogForm.value._id != '') {
+    if (this.blogForm.value._id && this.blogForm.value._id != '') {
       this.blogService.updateBlog(this.blogForm.value, this.blogForm.value._id).subscribe(res => {
         this.router.navigate([`/blogs/${res._id}`]);
       })
     } else {
-      delete this.blogForm.value._id
       this.blogService.createBlog(this.blogForm.value).subscribe(res => {
         this.router.navigate([`/blogs/${res._id}`]);
       })
@@ -110,6 +110,18 @@ export class BlogFormComponent implements OnInit {
 
   goback() {
     this.location.back()
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+    if (!this.blogForm.dirty) {
+      return true;
+    }
+    // Otherwise ask the user with the dialog service and return its
+    // observable which resolves to true or false when the user decides
+    const confirmation = window.confirm('您的数据还未保存，是否取消保存?');
+
+    return of(confirmation);
   }
 
 }

@@ -12,7 +12,8 @@ const routes: Routes = [{
   loadChildren: () => import('../auth/auth.module').then(mod => mod.AuthModule)
 }, {
   path: 'admin',
-  loadChildren: () => import('../admin/admin.module').then(mod => mod.AdminModule)
+  loadChildren: () => import('../admin/admin.module').then(mod => mod.AdminModule),
+  canLoad: [AuthGuard]
 }, {
   path: 'blogs',
   loadChildren: () => import('../blog/blog.module').then(mod => mod.BlogModule)
@@ -27,7 +28,8 @@ const routes: Routes = [{
   loadChildren: () => import('../blog/blog.module').then(mod => mod.BlogModule)
 }, {
   path: 'cfgs',
-  loadChildren: () => import('../cfg/cfg.module').then(mod => mod.CfgModule)
+  loadChildren: () => import('../cfg/cfg.module').then(mod => mod.CfgModule),
+  canLoad: [AuthGuard]
 }, {
   path: 'intelligenceAudio',
   loadChildren: () => import('../intelligence-audio/intelligence-audio.module').then(mod => mod.IntelligenceAudioModule)
@@ -39,7 +41,8 @@ const routes: Routes = [{
   loadChildren: () => import('../comments/comments.module').then(mod => mod.CommentsModule)
 }, {
   path: 'feedback',
-  loadChildren: () => import('../feedback/feedback.module').then(mod => mod.FeedbackModule)
+  loadChildren: () => import('../feedback/feedback.module').then(mod => mod.FeedbackModule),
+  canLoad: [AuthGuard]
 }, {
   path: 'dashboard',
   loadChildren: () => import('../dashboard/dashboard.module').then(mod => mod.DashboardModule)

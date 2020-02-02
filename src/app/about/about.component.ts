@@ -29,7 +29,7 @@ export class AboutComponent implements OnInit {
       this.router.navigate([this.router.url]);
       this.feedBackForm.reset();
       this.snackBar.open('消息已发出，请等待管理员和您联系', '关闭', {
-        duration: 2000,
+        duration: 5000,
       });
     })
 

@@ -4,24 +4,19 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import { TokenStorage } from './token.storage';
-import { TooltipComponent } from '@angular/material';
-import { BaseService } from '../base.service';
 
 @Injectable()
-export class AuthService extends BaseService {
+export class AuthService {
 
   constructor(
-    @Inject(PLATFORM_ID) platformId: Object,
-    @Inject(APP_ID) appId: string,
     private http: HttpClient, private token: TokenStorage) {
-    super(platformId, appId);
   }
 
   public $userSource = new Subject<any>();
 
   login(email: string, password: string): Observable<any> {
     return Observable.create(observer => {
-      this.http.post(`${this.serviceAdd}api/auth/login`, {
+      this.http.post(`/api/auth/login`, {
         email,
         password
       }).subscribe((data: any) => {
@@ -35,7 +30,7 @@ export class AuthService extends BaseService {
 
   register(fullname: string, email: string, password: string, repeatPassword: string): Observable<any> {
     return Observable.create(observer => {
-      this.http.post(`${this.serviceAdd}api/auth/register`, {
+      this.http.post(`/api/auth/register`, {
         fullname,
         email,
         password,
@@ -63,7 +58,7 @@ export class AuthService extends BaseService {
     return Observable.create(observer => {
       const tokenVal = this.token.getToken();
       if (!tokenVal) return observer.complete();
-      this.http.get(`${this.serviceAdd}api/auth/me`).subscribe((data: any) => {
+      this.http.get(`/api/auth/me`).subscribe((data: any) => {
         observer.next({ user: data.user });
         this.setUser(data.user);
         observer.complete();

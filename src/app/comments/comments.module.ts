@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CommentsRoutingModule } from './comments-routing.module';
 import { CommentsComponent } from './comments/comments.component';
 import { SharedModule } from '../shared/shared.module';
+import { CommentService } from './comment.service';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     SharedModule,
     CommentsRoutingModule
-  ]
+  ],
+  providers: [CommentService]
 })
 export class CommentsModule { }

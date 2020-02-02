@@ -3,7 +3,7 @@
     <!--Section: Products v.4-->
     <section class="col-12 col-md-9" *ngIf="blog$ | async as blog">
       <section class="px-2 bg-white">
-        <header class="text-center py-5">
+        <header class="py-4">
           <h2>{{ blog.title }}</h2>
           <div class="small mt-3">
             <span class="mx-2 grey-text">
@@ -30,6 +30,7 @@
           </div>
         </header>
         <div [innerHTML]="blog.content | htmlFormat "></div>
+        <div class="py-2">文章均来自网络收集，如有侵权请联系网站删除</div>
         <hr />
         <div class="pb-3">
           <i class="fas fa-tags grey-text"></i>

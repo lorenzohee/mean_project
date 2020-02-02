@@ -1,42 +1,32 @@
-import { Injectable, Inject, PLATFORM_ID, APP_ID } from '@angular/core';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Comment } from './comment';
-import { TokenStorage } from '../auth/token.storage';
 import { BaseService } from '../base.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 @Injectable({
   providedIn: 'root'
 })
-export class CommentService extends BaseService {
+export class CommentService {
 
   tokenVal: string;
-  constructor(
-    @Inject(PLATFORM_ID) platformId: Object,
-    @Inject(APP_ID) appId: string, private httpClient: HttpClient, private tokenService: TokenStorage) {
-    super(platformId, appId);
-    this.tokenVal = tokenService.getToken()
-  }
+  constructor(private service: BaseService) { }
 
   getComments(obj): Observable<Comment[]> {
     let params = new HttpParams().set('page', obj.get('page') || '1')
-    return this.httpClient.get<Comment[]>(`${this.serviceAdd}api/comments`, Object.assign({ params }, httpOptions));
+    return this.service.get({ url: 'api/comments', params: params })
   }
 
   createComment(comment: Comment): Observable<Comment> {
-    return this.httpClient.post<Comment>(`${this.serviceAdd}api/comments`, comment, httpOptions);
+    return this.service.post({ url: 'api/comments', form: comment })
   }
 
   getCommentsByArticleId(articleId: string, articleType: string): Observable<Comment[]> {
     let params = new HttpParams().set('parent_id', articleId).set('parent_type', articleType)
-    return this.httpClient.get<Comment[]>(`${this.serviceAdd}api/comments`, Object.assign({ params }, httpOptions));
+    return this.service.get({ url: 'api/comments', params: params })
   }
 
   deleteCommentById(id: string): Observable<Comment> {
-    if (!this.tokenVal) return Observable.create(observer => { observer.complete(); })
-    return this.httpClient.delete<Comment>(`${this.serviceAdd}api/comments/${id}`, httpOptions);
+    return this.service.delete(`api/comments/${id}`)
   }
 }
