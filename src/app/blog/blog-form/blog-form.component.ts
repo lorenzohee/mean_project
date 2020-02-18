@@ -42,9 +42,11 @@ export class BlogFormComponent implements OnInit {
   onSubmit() {
     if (this.blogForm.value._id && this.blogForm.value._id != '') {
       this.blogService.updateBlog(this.blogForm.value, this.blogForm.value._id).subscribe(res => {
+        this.blogForm.reset();
         this.router.navigate([`/blogs/${res._id}`]);
       })
     } else {
+      delete this.blogForm.value._id
       this.blogService.createBlog(this.blogForm.value).subscribe(res => {
         this.router.navigate([`/blogs/${res._id}`]);
       })

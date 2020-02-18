@@ -1,7 +1,7 @@
 import { Inject, PLATFORM_ID, APP_ID, Injectable, ErrorHandler, Injector, NgZone } from "@angular/core";
 
 import { isPlatformBrowser } from "@angular/common";
-import { HttpErrorResponse, HttpClient } from "@angular/common/http";
+import { HttpErrorResponse, HttpClient, HttpHeaders } from "@angular/common/http";
 import { throwError, Observable } from "rxjs";
 import { MatSnackBar } from "@angular/material";
 import { catchError, retry } from "rxjs/operators";
@@ -26,7 +26,7 @@ export class BaseService implements ErrorHandler {
   }
 
   private getRequestOptions(params?): any {
-    let headers = new Headers()
+    let headers = new HttpHeaders()
 
     headers.append('X-Requested-With', 'XMLHttpRequest')
     headers.append('Content-Type', 'application/json; charset=UTF-8')

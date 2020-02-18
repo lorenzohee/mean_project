@@ -30,7 +30,7 @@ if (config.env !== 'development') {
   win.Math = Math;
   win.localStorage = {
     //mock browser localstorage
-    getItem(key) { return null }, removeItem(str) { }, clear() { }, setItem(key, val) { }
+    getItem (key) { return null }, removeItem (str) { }, clear () { }, setItem (key, val) { }
   }
   global['window'] = win;
   global['document'] = win.document;
