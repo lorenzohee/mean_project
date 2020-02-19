@@ -29,6 +29,8 @@ export class BlogFormComponent implements OnInit {
     createdAt: [new Date(), Validators.required]
   })
 
+  validateFlag = false;
+
   blogTypes: any;
   blogTags: any;
   constructor(private fb: FormBuilder, private blogService: BlogService, private router: Router, private route: ActivatedRoute, private location: Location, private cfgService: CfgService) { }
@@ -42,7 +44,7 @@ export class BlogFormComponent implements OnInit {
   onSubmit() {
     if (this.blogForm.value._id && this.blogForm.value._id != '') {
       this.blogService.updateBlog(this.blogForm.value, this.blogForm.value._id).subscribe(res => {
-        this.blogForm.reset();
+        this.validateFlag = true;
         this.router.navigate([`/blogs/${res._id}`]);
       })
     } else {
@@ -116,7 +118,7 @@ export class BlogFormComponent implements OnInit {
 
   canDeactivate(): Observable<boolean> | boolean {
     // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
-    if (!this.blogForm.dirty) {
+    if (!this.blogForm.dirty || this.validateFlag) {
       return true;
     }
     // Otherwise ask the user with the dialog service and return its

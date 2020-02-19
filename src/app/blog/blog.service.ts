@@ -33,7 +33,7 @@ export class BlogService {
     if (obj.blogType) {
       params = params.set('blogType', obj.blogType)
     }
-    return this.baseService.get({ url: 'api/blogs', params: { params } })
+    return this.baseService.get({ url: 'api/blogs', params: params })
   }
 
   getBlogById(id: string): Observable<Blog> {

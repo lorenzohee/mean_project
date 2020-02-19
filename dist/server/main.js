@@ -3554,6 +3554,7 @@ var BlogFormComponent = /** @class */ (function () {
             bannerUrl: [''],
             createdAt: [new Date(), forms_1.Validators.required]
         });
+        this.validateFlag = false;
     }
     BlogFormComponent.prototype.ngOnInit = function () {
         this.getBlogById();
@@ -3564,7 +3565,7 @@ var BlogFormComponent = /** @class */ (function () {
         var _this = this;
         if (this.blogForm.value._id && this.blogForm.value._id != '') {
             this.blogService.updateBlog(this.blogForm.value, this.blogForm.value._id).subscribe(function (res) {
-                _this.blogForm.reset();
+                _this.validateFlag = true;
                 _this.router.navigate(["/blogs/" + res._id]);
             });
         }
@@ -3639,7 +3640,7 @@ var BlogFormComponent = /** @class */ (function () {
     };
     BlogFormComponent.prototype.canDeactivate = function () {
         // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
-        if (!this.blogForm.dirty) {
+        if (!this.blogForm.dirty || this.validateFlag) {
             return true;
         }
         // Otherwise ask the user with the dialog service and return its
@@ -4161,7 +4162,7 @@ var BlogService = /** @class */ (function () {
         if (obj.blogType) {
             params = params.set('blogType', obj.blogType);
         }
-        return this.baseService.get({ url: 'api/blogs', params: { params: params } });
+        return this.baseService.get({ url: 'api/blogs', params: params });
     };
     BlogService.prototype.getBlogById = function (id) {
         if (id) {
