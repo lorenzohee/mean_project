@@ -28,6 +28,7 @@ if (config.env !== 'development') {
   const win = domino.createWindow(templateA);
   win.Object = Object;
   win.Math = Math;
+  win.scrollTo = function (w, h) { }
   win.localStorage = {
     //mock browser localstorage
     getItem (key) { return null }, removeItem (str) { }, clear () { }, setItem (key, val) { }

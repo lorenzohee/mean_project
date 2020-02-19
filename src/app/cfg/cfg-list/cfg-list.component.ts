@@ -24,7 +24,7 @@ export class CfgListComponent implements OnInit {
       switchMap(params => {
         let page = params.get('page') || 1
         this.currentPage = Number.parseInt(params.get('page') || '1');
-        window && window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
         return this.cfgService.getCfgList({ page: page })
       })
     )

@@ -3770,7 +3770,7 @@ var BlogIndexComponent = /** @class */ (function () {
                 blogNum: 'all'
             };
             _this.currentPage = Number.parseInt(params.get('page') || '1');
-            window && window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
             return _this.blogService.getBlogList(listParam);
         }));
         this.blogCount$ = this.route.paramMap.pipe(operators_1.switchMap(function (params) {
@@ -3918,7 +3918,7 @@ var BlogListComponent = /** @class */ (function () {
                 blogType: params.get('blogType')
             };
             _this.currentPage = Number.parseInt(params.get('page') || '1');
-            window && window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
             return _this.blogService.getBlogList(listParam);
         }));
         this.blogCount$ = this.route.paramMap.pipe(operators_1.switchMap(function (params) {
@@ -4663,7 +4663,7 @@ var CfgListComponent = /** @class */ (function () {
         this.cfgs$ = this.route.paramMap.pipe(operators_1.switchMap(function (params) {
             var page = params.get('page') || 1;
             _this.currentPage = Number.parseInt(params.get('page') || '1');
-            window && window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
             return _this.cfgService.getCfgList({ page: page });
         }));
         this.cfgCount$ = this.route.paramMap.pipe(operators_1.switchMap(function (params) {

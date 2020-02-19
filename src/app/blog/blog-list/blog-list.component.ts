@@ -31,7 +31,7 @@ export class BlogListComponent implements OnInit {
           blogType: params.get('blogType')
         }
         this.currentPage = Number.parseInt(params.get('page') || '1');
-        window && window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
         return this.blogService.getBlogList(listParam)
       })
     )
