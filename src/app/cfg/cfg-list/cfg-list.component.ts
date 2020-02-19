@@ -16,16 +16,19 @@ export class CfgListComponent implements OnInit {
 
   cfgCount$: Observable<string>
 
+  currentPage = 1
   constructor(private cfgService: CfgService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.cfgs$ = this.route.queryParamMap.pipe(
+    this.cfgs$ = this.route.paramMap.pipe(
       switchMap(params => {
         let page = params.get('page') || 1
+        this.currentPage = Number.parseInt(params.get('page') || '1');
+        window && window.scrollTo(0, 0);
         return this.cfgService.getCfgList({ page: page })
       })
     )
-    this.cfgCount$ = this.route.queryParamMap.pipe(
+    this.cfgCount$ = this.route.paramMap.pipe(
       switchMap(params => {
         let page = params.get('page') || 1
         return this.cfgService.getCfgCount({ page: page })
@@ -40,13 +43,5 @@ export class CfgListComponent implements OnInit {
         this.router.navigate([this.router.url]);
       })
     }
-  }
-
-  changePage(num: number) {
-    let params = Object.assign({}, this.route.snapshot.queryParams);
-    params.page = num;
-    this.router.navigate(['/cfgs'], {
-      queryParams: params
-    });
   }
 }

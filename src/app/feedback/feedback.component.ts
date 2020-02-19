@@ -20,7 +20,7 @@ export class FeedbackComponent implements OnInit {
   constructor(private authService: AuthService, private feedBackService: FeedbackService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.feedback$ = this.route.queryParamMap.pipe(
+    this.feedback$ = this.route.paramMap.pipe(
       switchMap(params => {
         return this.feedBackService.getFeedBack(params)
       })

@@ -31,5 +31,6 @@
     </table>
   </section>
   <!-- Section: Blog v.4 -->
-  <app-pagination (OnChange)="changePage($event)" [total]="blogCount$ | async" *ngIf="blogCount$"></app-pagination>
+  <app-pagination [icur]="currentPage" [total]="blogCount$ | async" *ngIf="blogCount$">
+  </app-pagination>
 </div>

@@ -26,6 +26,7 @@ import {
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PaginationComponent } from './pagination/pagination.component';
 import { HtmlFormatPipe } from '../pipe/html-format.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { HtmlFormatPipe } from '../pipe/html-format.pipe';
     MatSelectModule,
     FlexLayoutModule,
     MatCheckboxModule,
+    RouterModule,
     MDBBootstrapModule.forRoot(),
   ],
   exports: [

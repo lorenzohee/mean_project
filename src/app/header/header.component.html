@@ -14,16 +14,15 @@
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']"
-            [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
+          <a class="nav-link waves-light" mdbWavesEffect
+            [routerLink]="['/method',{blogType:'innovationMethod'}]">创新方法论</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']"
-            [queryParams]="{blogType:'innovationTech'}">创新技术</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech',{blogType:'innovationTech'}]">创新技术</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']"
-            [queryParams]="{blogType:'innovationThing'}">创新好物</a>
+          <a class="nav-link waves-light" mdbWavesEffect
+            [routerLink]="['/things',{blogType:'innovationThing'}]">创新好物</a>
         </li>
         <!-- Dropdown -->
         <li class="nav-item dropdown mx-2" dropdown *ngIf="user">
@@ -104,16 +103,15 @@
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/blogs']">博客</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/method']"
-            [queryParams]="{blogType:'innovationMethod'}">创新方法论</a>
+          <a class="nav-link waves-light" mdbWavesEffect
+            [routerLink]="['/method',{blogType:'innovationMethod'}]">创新方法论</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech']"
-            [queryParams]="{blogType:'innovationTech'}">创新技术</a>
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/tech',{blogType:'innovationTech'}]">创新技术</a>
         </li>
         <li class="nav-item mx-2">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/things']"
-            [queryParams]="{blogType:'innovationThing'}">创新好物</a>
+          <a class="nav-link waves-light" mdbWavesEffect
+            [routerLink]="['/things',{blogType:'innovationThing'}]">创新好物</a>
         </li>
         <!-- Dropdown -->
         <li class="nav-item dropdown mx-2" dropdown *ngIf="user">

@@ -17,21 +17,25 @@ export class BlogListComponent implements OnInit {
 
   blogCount$: Observable<string>
 
+  currentPage = 1
+
   public user: any;
 
   constructor(private authService: AuthService, private blogService: BlogService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.blogs$ = this.route.queryParamMap.pipe(
+    this.blogs$ = this.route.paramMap.pipe(
       switchMap(params => {
         let listParam = {
           page: params.get('page') || 1,
           blogType: params.get('blogType')
         }
+        this.currentPage = Number.parseInt(params.get('page') || '1');
+        window && window.scrollTo(0, 0);
         return this.blogService.getBlogList(listParam)
       })
     )
-    this.blogCount$ = this.route.queryParamMap.pipe(
+    this.blogCount$ = this.route.paramMap.pipe(
       switchMap(params => {
         let listParam = {
           blogType: params.get('blogType')
@@ -55,14 +59,6 @@ export class BlogListComponent implements OnInit {
 
   scrollTop() {
     window.scrollTo(0, 0);
-  }
-
-  changePage(num: number) {
-    let params = Object.assign({}, this.route.snapshot.queryParams);
-    params.page = num;
-    this.router.navigate(['/blogs'], {
-      queryParams: params
-    });
   }
 
 }

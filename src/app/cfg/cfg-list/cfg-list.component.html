@@ -34,6 +34,6 @@
   </section>
   <!-- Section: Blog v.4 -->
 
-  <app-pagination (OnChange)="changePage($event)" [total]="cfgCount$ | async" *ngIf="cfgCount$"></app-pagination>
+  <app-pagination [icur]="currentPage" [total]="cfgCount$ | async" *ngIf="cfgCount$"></app-pagination>
 
 </div>

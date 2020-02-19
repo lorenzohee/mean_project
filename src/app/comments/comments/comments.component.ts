@@ -21,7 +21,7 @@ export class CommentsComponent implements OnInit {
   constructor(private authService: AuthService, private commentService: CommentService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.comments$ = this.route.queryParamMap.pipe(
+    this.comments$ = this.route.paramMap.pipe(
       switchMap(params => {
         return this.commentService.getComments(params)
       })

@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, SimpleChange } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pagination',
@@ -10,6 +12,7 @@ export class PaginationComponent implements OnInit {
   private _total: number;
   public _num: number;
   public pageList = [];
+  public url = ''
 
   @Input()
   set total(total: number) {
@@ -24,15 +27,32 @@ export class PaginationComponent implements OnInit {
   size: number = 10;
   @Input()
   icur: number = 1;
-  @Output()
-  OnChange: EventEmitter<number> = new EventEmitter();
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.url = this.router.url;
+  }
+
   ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
     this._num = Math.ceil(this.total / this.size)
+    this.url = this.router.url;
     this.getPageList()
+  }
+
+  getPgUrl(index) {
+    let url_array = this.url.split(';')
+    let url_root = url_array[0];
+    let params = {}
+    if (url_array.length > 1) {
+      let url_params = url_array[1].split('&');
+      url_params.forEach(element => {
+        let tmp = element.split('=');
+        params[tmp[0]] = tmp[1];
+      });
+    }
+    params['page'] = index
+    return [url_root, params]
   }
 
   getPageList() {
@@ -50,24 +70,6 @@ export class PaginationComponent implements OnInit {
       this.pageList = [this._num - 4, this._num - 3, this._num - 2, this._num - 1, this._num]
     } else {
       this.pageList = [this.icur - 2, this.icur - 1, this.icur, this.icur + 1, this.icur + 2]
-    }
-  }
-
-  pageChange(value: number) {
-    this.OnChange.emit(value)
-    this.icur = value;
-  }
-
-  pageListToFirst() {
-    this.OnChange.emit(1)
-    this.icur = 1;
-    if (this._num > 5) {
-      this.pageList = [1, 2, 3, 4, 5]
-    } else {
-      this.pageList = []
-      for (let i = 0; i < this._num; i++) {
-        this.pageList.push(i + 1)
-      }
     }
   }
 
@@ -105,20 +107,6 @@ export class PaginationComponent implements OnInit {
       this.pageList = this.pageList.map((value, index) => {
         return value += 5
       })
-    }
-  }
-
-  pageListToLast() {
-    this.OnChange.emit(this._num)
-    this.icur = this._num;
-    if (this._num > 5) {
-      this.pageList = [this._num - 4, this._num - 3, this._num - 2, this._num - 1, this._num]
-    } else {
-      this.pageList = []
-      for (let i = this._num; i > 0; i--) {
-        this.pageList.push(i)
-      }
-      this.pageList.reverse();
     }
   }
 }
