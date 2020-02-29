@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-list',
@@ -21,7 +22,9 @@ export class BlogListComponent implements OnInit {
 
   public user: any;
 
-  constructor(private authService: AuthService, private blogService: BlogService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private authService: AuthService, private blogService: BlogService, 
+    private titleService: Title,
+    private metaService: Meta,private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.blogs$ = this.route.paramMap.pipe(
@@ -46,6 +49,10 @@ export class BlogListComponent implements OnInit {
     this.authService.me().subscribe(data => {
       this.user = data.user;
     });
+
+    this.titleService.setTitle( '创新驿路' );
+    this.metaService.updateTag({name: 'description', content: '创新驿路-提供最新创新方法，创新事务'})
+    this.metaService.updateTag({name: 'keywords', content: "创新方法,创新驿站,创新驿路,创新事件,创新,创新的事情,创新方法论"})
   }
 
   deleteBlog(id) {

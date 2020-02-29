@@ -18,11 +18,12 @@ export class BaseService implements ErrorHandler {
     private injector: Injector,
     public snackBar: MatSnackBar,
     private readonly zone: NgZone) {
-    if (isPlatformBrowser(platformId)) {
-      this.serviceAdd = '/'
-    } else {
-      this.serviceAdd = 'https://innovationroad.site/'
-    }
+      // ssr need this full path
+    // if (isPlatformBrowser(platformId)) {
+    //   this.serviceAdd = '/'
+    // } else {
+    //   this.serviceAdd = 'https://innovationroad.site/'
+    // }
   }
 
   private getRequestOptions(params?): any {

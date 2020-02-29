@@ -6,14 +6,12 @@
   "scripts": {
     "ng": "ng",
     "serve": "pm2 start server/pm2.ecosystem.config.js --env production",
-    "start": "concurrently -c \"yellow.bold,green.bold\" -n \"SERVER,BUILD\" \"nodemon server\" \"ng build --watch\"",
+    "start": "concurrently -c \"blue.bold,yellow.bold,green.bold\" -n \"SSR,SERVER,BUILD\" \"ng run angular-material:server\" \"nodemon server\" \"ng build --watch\"",
     "build": "ng build --prod --aot && ng run angular-material:server",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:ssr": "npm run build:client-and-server-bundles",
-    "serve:ssr": "node server",
-    "build:client-and-server-bundles": "ng build --prod && ng run angular-material:server"
+    "serve:ssr": "ng run angular-material:server"
   },
   "private": false,
   "dependencies": {

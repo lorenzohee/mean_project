@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Blog } from '../blog';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { BlogService } from '../blog.service';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from '../../auth/auth.service';
+import { Title, Meta } from '@angular/platform-browser';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-blog-detail',
@@ -21,7 +24,10 @@ export class BlogDetailComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private blogService: BlogService
+    private blogService: BlogService,
+    private titleService: Title,
+    private metaService: Meta,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit() {
@@ -37,6 +43,13 @@ export class BlogDetailComponent implements OnInit {
         this.blogService.getBlogById(params.get('id'))
       )
     )
+    this.blog$.subscribe(blog=>{
+      this.titleService.setTitle( blog.title );
+      this.metaService.updateTag({name: 'description', content: blog.title})
+      let keyWords = (this.metaService.getTag('name= "keywords"') && this.metaService.getTag('name= "keywords"').content) || '创新方法,创新驿站,创新驿路,创新事件,创新,创新的事情,创新方法论';
+      keyWords += blog.tags.join(',')
+      this.metaService.updateTag({name: 'keywords', content: keyWords})
+    })
   }
 
   deleteBlog(id) {
@@ -48,6 +61,9 @@ export class BlogDetailComponent implements OnInit {
   }
 
   scrollTop() {
-    window.scrollTo(0, 0);
+    if (isPlatformBrowser(this.platformId)) {
+      // Client only code.
+      window.scrollTo(0, 0);
+    }
   }
 }

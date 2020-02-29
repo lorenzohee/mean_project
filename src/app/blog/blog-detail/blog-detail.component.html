@@ -29,14 +29,24 @@
             </span>
           </div>
         </header>
-        <div [innerHTML]="blog.content | htmlFormat "></div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+            style="display:block; text-align:center;"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-4838746167999749"
+            data-ad-slot="9560442788"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <div [innerHTML]="blog.content | htmlFormat " class="mt-2"></div>
         <div class="py-2">文章均来自网络收集，如有侵权请联系网站删除</div>
         <hr />
         <div class="pb-3">
           <i class="fas fa-tags grey-text"></i>
           <span *ngFor="let tag of blog.tags" class="text-default mx-2">
             <mdb-badge pill="true" color="light-blue">
-              {{(tag || '') | blogType}}
+              {{ tag || '' }}
             </mdb-badge>
           </span>
         </div>
