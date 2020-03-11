@@ -39,8 +39,7 @@ export class CfgListComponent implements OnInit {
   deleteCfg(id) {
     if (confirm('确认要删除此cfg吗？')) {
       this.cfgService.deleteCfgById(id).subscribe(res => {
-        this.router.navigated = false;
-        this.router.navigate([this.router.url]);
+        this.cfgs$ = this.cfgService.getCfgList({ page: this.currentPage })
       })
     }
   }

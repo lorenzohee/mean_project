@@ -36,7 +36,7 @@ export class BlogTypePipe implements PipeTransform {
         tmp = '翻译';
         break;
       default:
-        tmp = '无'
+        tmp = '创新资讯'
     }
     return tmp;
   }

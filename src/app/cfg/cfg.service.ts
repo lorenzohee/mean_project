@@ -43,6 +43,6 @@ export class CfgService {
   }
 
   deleteCfgById(id: string): Observable<Cfg> {
-    return this.service.delete(`api/cfgs/${id}`)
+    return this.service.delete({ url: `api/cfgs/${id}` })
   }
 }

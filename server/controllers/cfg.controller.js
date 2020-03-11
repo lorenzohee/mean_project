@@ -28,14 +28,14 @@ async function index (obj) {
   let pageNum = config.paginationNum;
   if (obj.count) {
     delete obj.count
-    return await Cfg.find(obj).estimated_document_count();
+    return await Cfg.find(obj).countDocuments();
   } else {
     return await Cfg.find(obj).sort({ '_id': -1 }).skip((page - 1) * pageNum).limit(pageNum);
   }
 }
 
 async function count (obj) {
-  return await Cfg.find().sort({ '_id': -1 }).estimated_document_count();
+  return await Cfg.find().sort({ '_id': -1 }).countDocuments();
 }
 
 async function detail (id) {

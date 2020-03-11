@@ -36,6 +36,9 @@ export class BlogService {
     if (obj.tags) {
       params = params.set('tags', obj.tags)
     }
+    if (obj.blogNum) {
+      params = params.set('blogNum', obj.blogNum)
+    }
     return this.baseService.get({ url: 'api/blogs', params: params })
   }
 
@@ -56,7 +59,7 @@ export class BlogService {
   }
 
   deleteBlogById(id: string): Observable<Blog> {
-    return this.baseService.delete(`api/blogs/${id}`)
+    return this.baseService.delete({ url: `api/blogs/${id}` })
   }
 
   postBannerFile(fileToUpload: File): Observable<any> {
