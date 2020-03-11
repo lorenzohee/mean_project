@@ -3252,12 +3252,12 @@ var BlogDetailComponent = /** @class */ (function () {
             return _this.blogService.getBlogById(params.get('id'));
         }));
         this.blog$.subscribe(function (blog) {
+            _this.getRelativeBlogs(blog);
             _this.titleService.setTitle(blog.title);
             _this.metaService.updateTag({ name: 'description', content: blog.title });
             var keyWords = (_this.metaService.getTag('name= "keywords"') && _this.metaService.getTag('name= "keywords"').content) || '创新方法,创新驿站,创新驿路,创新事件,创新,创新的事情,创新方法论,';
             keyWords += blog.tags.join(',');
             _this.metaService.updateTag({ name: 'keywords', content: keyWords });
-            _this.getRelativeBlogs(blog);
         });
     };
     BlogDetailComponent.prototype.getRelativeBlogs = function (blog) {
