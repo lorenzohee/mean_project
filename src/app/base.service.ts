@@ -18,7 +18,7 @@ export class BaseService implements ErrorHandler {
     private injector: Injector,
     public snackBar: MatSnackBar,
     private readonly zone: NgZone) {
-      // ssr need this full path
+    // ssr need this full path
     // if (isPlatformBrowser(platformId)) {
     //   this.serviceAdd = '/'
     // } else {
@@ -94,7 +94,7 @@ export class BaseService implements ErrorHandler {
   public handleError(error: HttpErrorResponse) {
     if (error instanceof HttpErrorResponse) {
       this.zone.run(() => {
-        const snackBar = this.snackBar.open(error.error, 'OK', {
+        const snackBar = this.snackBar.open(error.message, 'OK', {
           verticalPosition: 'bottom',
           horizontalPosition: 'center',
           duration: 3000,

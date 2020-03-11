@@ -27,6 +27,8 @@ var upload = multer({
 const router = express.Router();
 module.exports = router;
 
+router.get('/getRelativeBlogs', getRelativeBlogs);
+router.get('/gettagcloud', tagCloud);
 router.post('/upload', passport.authenticate('jwt', { session: false }), upload.single('blogBanner'), postBanner);
 router.post('/', passport.authenticate('jwt', { session: false }), insert);
 router.get('/', index);
@@ -61,6 +63,15 @@ async function destroy (req, res) {
 
 async function postBanner (req, res) {
   var file = req.file;
-  console.log('testxxx' + JSON.stringify(req.file))
   res.json(file)
+}
+
+async function getRelativeBlogs (req, res) {
+  let blogs = await blogCtrl.getRelativeBlogs(req.params.id, req.params.tag);
+  res.json(blogs)
+}
+
+async function tagCloud (req, res) {
+  let tagCloud = await blogCtrl.tagCloud();
+  res.json(tagCloud)
 }

@@ -5,6 +5,10 @@ import { HomeComponent } from '../home/home.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const routes: Routes = [{
+  path: '',
+  redirectTo: '/home',
+  pathMatch: 'full'
+}, {
   path: 'home',
   component: HomeComponent
 }, {
@@ -46,9 +50,6 @@ const routes: Routes = [{
 }, {
   path: 'dashboard',
   loadChildren: () => import('../dashboard/dashboard.module').then(mod => mod.DashboardModule)
-}, {
-  path: '',
-  component: HomeComponent
 }, {
   path: '**',
   component: PageNotFoundComponent

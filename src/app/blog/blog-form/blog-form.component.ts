@@ -23,7 +23,7 @@ export class BlogFormComponent implements OnInit {
     title: ['', Validators.required],
     content: ['', Validators.required],
     blogType: ['', Validators.required],
-    blogAccess: ['', Validators.required],
+    blogAccess: ['public', Validators.required],
     tags: [''],
     bannerUrl: [''],
     createdAt: [new Date(), Validators.required]
@@ -50,6 +50,7 @@ export class BlogFormComponent implements OnInit {
     } else {
       delete this.blogForm.value._id
       this.blogService.createBlog(this.blogForm.value).subscribe(res => {
+        this.validateFlag = true;
         this.router.navigate([`/blogs/${res._id}`]);
       })
     }

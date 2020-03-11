@@ -1,63 +1,92 @@
 <div class="container py-5">
   <div class="row">
     <!--Section: Products v.4-->
-    <section class="col-12 col-md-9" *ngIf="blog$ | async as blog">
-      <section class="px-2 bg-white">
-        <header class="py-4">
-          <h2>{{ blog.title }}</h2>
-          <div class="small mt-3">
-            <span class="mx-2 grey-text">
-              <i class="fas fa-tag pr-2"></i>
-              <span class="clearfix d-none d-md-inline-block">{{(blog.blogType || '') | blogType}}</span>
-            </span>
-            <span class="mx-2 grey-text">
-              <i class="far fa-clock pr-2"></i>
-              <span class="clearfix d-none d-md-inline-block">{{blog.createdAt | date:"yyyy-MM-dd"}}</span>
-            </span>
-            <span class="mx-2" *ngIf="user">
-              <a class="grey-text" [routerLink]="['/blogs', blog._id, 'edit']">
-                <i class="far fa-edit pr-2"></i>
-                <span class="clearfix d-none d-md-inline-block">编辑</span>
+    <section class="col-12 col-md-8 px-0">
+      <section *ngIf="blog$ | async as blog">
+        <section class="px-3 bg-white">
+          <header class="py-4">
+            <h2>{{ blog.title }}</h2>
+            <div class="small mt-3">
+              <span class="mx-2 grey-text">
+                <i class="fas fa-tag pr-2"></i>
+                <span class="clearfix d-none d-md-inline-block">{{(blog.blogType || '') | blogType}}</span>
+              </span>
+              <span class="mx-2 grey-text">
+                <i class="far fa-clock pr-2"></i>
+                <span class="clearfix d-none d-md-inline-block">{{blog.createdAt | date:"yyyy-MM-dd"}}</span>
+              </span>
+              <span class="mx-2" *ngIf="user">
+                <a class="grey-text" [routerLink]="['/blogs', blog._id, 'edit']">
+                  <i class="far fa-edit pr-2"></i>
+                  <span class="clearfix d-none d-md-inline-block">编辑</span>
+                </a>
+              </span>
+              <span class="mx-2" *ngIf="user">
+                <!-- Google+ -->
+                <a class="grey-text" (click)="deleteBlog(blog._id)">
+                  <i class="far fa-trash-alt pr-2"></i>
+                  <span class="clearfix d-none d-md-inline-block">删除</span>
+                </a>
+              </span>
+            </div>
+          </header>
+          <ng-adsense [pageLevelAds]="true"></ng-adsense>
+          <div [innerHTML]="blog.content | htmlFormat " class="mt-2"></div>
+          <div class="py-2">文章均来自网络收集，如有侵权请联系网站删除</div>
+          <hr />
+          <div class="pb-3">
+            <i class="fas fa-tags grey-text"></i>
+            <ng-container *ngFor="let tag of blog.tags">
+              <a class="text-default mx-2" [routerLink]="['/blogs',{tags: tag}]" *ngIf="tag != 'recommand'">
+                <mdb-badge pill="true" color="light-blue">
+                  {{ tag || '' }}
+                </mdb-badge>
               </a>
-            </span>
-            <span class="mx-2" *ngIf="user">
-              <!-- Google+ -->
-              <a class="grey-text" (click)="deleteBlog(blog._id)">
-                <i class="far fa-trash-alt pr-2"></i>
-                <span class="clearfix d-none d-md-inline-block">删除</span>
-              </a>
-            </span>
+            </ng-container>
           </div>
-        </header>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <ins class="adsbygoogle"
-            style="display:block; text-align:center;"
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-4838746167999749"
-            data-ad-slot="9560442788"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <div [innerHTML]="blog.content | htmlFormat " class="mt-2"></div>
-        <div class="py-2">文章均来自网络收集，如有侵权请联系网站删除</div>
-        <hr />
-        <div class="pb-3">
-          <i class="fas fa-tags grey-text"></i>
-          <span *ngFor="let tag of blog.tags" class="text-default mx-2">
-            <mdb-badge pill="true" color="light-blue">
-              {{ tag || '' }}
-            </mdb-badge>
-          </span>
-        </div>
-      </section>
-      <!--Grid row-->
-      <section class="my-5 px-0">
-        <app-comment [blog_id]="blog._id" blog_type="Blog"></app-comment>
+        </section>
+        <!--Grid row-->
+        <section class="my-5 px-0">
+          <app-comment [blog_id]="blog._id" blog_type="Blog"></app-comment>
+        </section>
       </section>
     </section>
-    <section class="col-0 col-md-3">
+    <section class="col-0 col-md-4">
       <!-- <app-sidebar></app-sidebar> -->
+      <mdb-card>
+        <!--Card image-->
+        <mdb-card-header>
+          <h5>相关文章</h5>
+        </mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item px-0 pb-0" *ngFor="let re_blog of relatedBlogs$ | async">
+              <!--Title-->
+              <mdb-card-title>
+                <h6>{{re_blog.title}}</h6>
+              </mdb-card-title>
+              <!--Text-->
+              <mdb-card-text>{{re_blog.content | htmlFormat:'nohtml' | slice:0:70 }}</mdb-card-text>
+            </li>
+          </ul>
+        </mdb-card-body>
+      </mdb-card>
+      <mdb-card class="mt-3">
+        <!--Card image-->
+        <mdb-card-header>
+          <h5>网站标签</h5>
+        </mdb-card-header>
+        <!--Card content-->
+        <mdb-card-body>
+          <h6>
+            <a [routerLink]="['/blogs',{tags: tag.key}]" class="mx-2 my-1" *ngFor="let tag of tagCloud$ | async">
+            <mdb-badge color="cyan">{{ tag.key }}({{ tag.num }})</mdb-badge>
+            </a>
+          </h6>
+        </mdb-card-body>
+      </mdb-card>
+      <ng-adsense [pageLevelAds]="true"></ng-adsense>
     </section>
     <!--Section: Products v.4-->
   </div>

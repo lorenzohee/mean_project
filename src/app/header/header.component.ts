@@ -11,7 +11,9 @@ import { CfgService } from '../cfg/cfg.service';
 })
 export class HeaderComponent implements OnInit {
 
-  url: string = ""
+  coverFlag: boolean = false
+  coverClass: string = 'navbar navbar-expand-lg navbar-dark bg-primary scrolling-navbar intro-fixed-nav'
+
   @Input() user: any = {};
 
   blogTypes: any;
@@ -23,14 +25,18 @@ export class HeaderComponent implements OnInit {
   ) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.url = event.url;
+        if (event.url == "/home" || event.url == "/" || event.url == "") {
+          this.coverFlag = true;
+          this.coverClass = 'navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar intro-fixed-nav'
+        } else {
+          this.coverFlag = false;
+          this.coverClass = 'navbar navbar-expand-lg navbar-dark bg-primary scrolling-navbar intro-fixed-nav'
+        }
       }
     })
   }
 
-  ngOnInit() {
-    this.getBlogType();
-  }
+  ngOnInit() { }
 
   getBlogType() {
     this.cfgService.getCfgList({ page: 1, key: 'ARTICLE_TYPE' }).subscribe(res => {

@@ -33,6 +33,9 @@ export class BlogService {
     if (obj.blogType) {
       params = params.set('blogType', obj.blogType)
     }
+    if (obj.tags) {
+      params = params.set('tags', obj.tags)
+    }
     return this.baseService.get({ url: 'api/blogs', params: params })
   }
 
@@ -58,5 +61,15 @@ export class BlogService {
 
   postBannerFile(fileToUpload: File): Observable<any> {
     return this.baseService.postImageFile(fileToUpload);
+  }
+
+  getRelativeBlogs(id: string, tag: string): Observable<Blog[]> {
+    let params = new HttpParams().set('id', id)
+    params = params.set('tag', tag)
+    return this.baseService.get({ url: `api/blogs/getRelativeBlogs`, params })
+  }
+
+  tagCloud(): Observable<any> {
+    return this.baseService.get({ url: `api/blogs/gettagcloud` })
   }
 }

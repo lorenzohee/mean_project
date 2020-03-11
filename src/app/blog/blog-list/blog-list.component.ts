@@ -22,16 +22,17 @@ export class BlogListComponent implements OnInit {
 
   public user: any;
 
-  constructor(private authService: AuthService, private blogService: BlogService, 
+  constructor(private authService: AuthService, private blogService: BlogService,
     private titleService: Title,
-    private metaService: Meta,private route: ActivatedRoute, private router: Router) { }
+    private metaService: Meta, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.blogs$ = this.route.paramMap.pipe(
       switchMap(params => {
         let listParam = {
           page: params.get('page') || 1,
-          blogType: params.get('blogType')
+          blogType: params.get('blogType'),
+          tags: params.get('tags')
         }
         this.currentPage = Number.parseInt(params.get('page') || '1');
         window.scrollTo(0, 0);
@@ -41,7 +42,8 @@ export class BlogListComponent implements OnInit {
     this.blogCount$ = this.route.paramMap.pipe(
       switchMap(params => {
         let listParam = {
-          blogType: params.get('blogType')
+          blogType: params.get('blogType'),
+          tags: params.get('tags')
         }
         return this.blogService.getBlogCount(listParam)
       })
@@ -50,9 +52,9 @@ export class BlogListComponent implements OnInit {
       this.user = data.user;
     });
 
-    this.titleService.setTitle( '创新驿路' );
-    this.metaService.updateTag({name: 'description', content: '创新驿路-提供最新创新方法，创新事务'})
-    this.metaService.updateTag({name: 'keywords', content: "创新方法,创新驿站,创新驿路,创新事件,创新,创新的事情,创新方法论"})
+    this.titleService.setTitle('创新驿路');
+    this.metaService.updateTag({ name: 'description', content: '创新驿路-提供最新创新方法，创新事务' })
+    this.metaService.updateTag({ name: 'keywords', content: "创新方法,创新驿站,创新驿路,创新事件,创新,创新的事情,创新方法论" })
   }
 
   deleteBlog(id) {

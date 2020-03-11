@@ -21,22 +21,22 @@ if (config.env !== 'development') {
 
   // Faster server renders w/ Prod mode (dev mode never needed)
   enableProdMode();
-}
 
-const domino = require('domino');
-const templateA = fs.readFileSync(path.join('dist', 'index.html')).toString();
-const win = domino.createWindow(templateA);
-win.Object = Object;
-win.Math = Math;
-win.scrollTo = function (w, h) { }
-win.localStorage = {
-  //mock browser localstorage
-  getItem (key) { return null }, removeItem (str) { }, clear () { }, setItem (key, val) { }
+  const domino = require('domino');
+  const templateA = fs.readFileSync(path.join('dist', 'index.html')).toString();
+  const win = domino.createWindow(templateA);
+  win.Object = Object;
+  win.Math = Math;
+  win.scrollTo = function (w, h) { }
+  win.localStorage = {
+    //mock browser localstorage
+    getItem (key) { return null }, removeItem (str) { }, clear () { }, setItem (key, val) { }
+  }
+  global['window'] = win;
+  global['document'] = win.document;
+  global['branch'] = null;
+  global['object'] = win.object;
 }
-global['window'] = win;
-global['document'] = win.document;
-global['branch'] = null;
-global['object'] = win.object;
 
 const app = express();
 
@@ -71,24 +71,25 @@ app.use(logger('combined', { stream: accessLogStream }));//写入日志文件
 
 var distDir = '../../dist/';
 
-//SSR 服务端渲染
-// * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/server/main');
+if (config.env !== 'development') {
+  //SSR 服务端渲染
+  // * NOTE :: leave this as require() since this file is built Dynamically from webpack
+  const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../../dist/server/main');
 
-// Express Engine
-const { ngExpressEngine } = require('@nguniversal/express-engine');
-// Import module map for lazy loading
-const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
+  // Express Engine
+  const { ngExpressEngine } = require('@nguniversal/express-engine');
+  // Import module map for lazy loading
+  const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
 
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
-  providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
-  ]
-}));
-app.set('view engine', 'html');
-app.set('views', path.join(process.cwd(), 'dist'));
-
+  app.engine('html', ngExpressEngine({
+    bootstrap: AppServerModuleNgFactory,
+    providers: [
+      provideModuleMap(LAZY_MODULE_MAP)
+    ]
+  }));
+  app.set('view engine', 'html');
+  app.set('views', path.join(process.cwd(), 'dist'));
+}
 // 
 app.use(express.static(path.join(__dirname, distDir)))
 app.use(express.static(path.join(__dirname, '../../uploads')))
