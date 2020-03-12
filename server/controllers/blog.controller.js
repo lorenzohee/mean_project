@@ -43,7 +43,6 @@ async function index (obj) {
   }
   if (obj.count) {
     delete obj.count
-    console.log('!!!!!!!!!!!!!!!' + JSON.stringify(obj))
     return await Blog.find(obj).countDocuments();
   } else {
     return await Blog.find(obj).sort({ '_id': -1 }).skip((page - 1) * pageNum).limit(pageNum);

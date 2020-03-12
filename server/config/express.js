@@ -50,7 +50,7 @@ var logDirectory = path.join(__dirname, '../logs');
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 //创建一个写路由
 var accessLogStream = FileStreamRotator.getStream({
-  filename: logDirectory + '/accss-%DATE%.log',
+  filename: logDirectory + '/innovationroad-%DATE%.log',
   frequency: 'daily',
   verbose: false
 })

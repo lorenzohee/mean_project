@@ -67,7 +67,7 @@ async function postBanner (req, res) {
 }
 
 async function getRelativeBlogs (req, res) {
-  let blogs = await blogCtrl.getRelativeBlogs(req.params.id, req.params.tag);
+  let blogs = await blogCtrl.getRelativeBlogs(req.query.id, req.query.tag);
   res.json(blogs)
 }
 
