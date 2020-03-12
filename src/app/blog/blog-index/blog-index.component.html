@@ -15,8 +15,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let blog of blogs$ | async">
-          <td>{{blog._id}}</td>
-          <td>{{blog.title}}</td>
+          <td><a [routerLink]="['/blogs', blog._id]">{{blog._id}}</a></td>
+          <td><a [routerLink]="['/blogs', blog._id]">{{blog.title}}</a></td>
           <td>{{(blog.blogType || '') | blogType}}</td>
           <td>{{blog.createdAt | date:"yyyy-MM-dd"}}</td>
           <td>{{blog.tags}}</td>

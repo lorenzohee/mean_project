@@ -64,7 +64,9 @@
             <li class="list-group-item px-0 pb-0" *ngFor="let re_blog of relatedBlogs$ | async">
               <!--Title-->
               <mdb-card-title>
-                <h6>{{re_blog.title}}</h6>
+                <h6>
+                  <a [routerLink]="['/blogs', re_blog._id]">{{re_blog.title}}</a>
+                </h6>
               </mdb-card-title>
               <!--Text-->
               <mdb-card-text>{{re_blog.content | htmlFormat:'nohtml' | slice:0:70 }}</mdb-card-text>
@@ -81,7 +83,7 @@
         <mdb-card-body>
           <h6>
             <a [routerLink]="['/blogs',{tags: tag.key}]" *ngFor="let tag of tagCloud$ | async">
-            <mdb-badge color="cyan" class="my-2 py-1 px-1 mx-2">{{ tag.key }}({{ tag.num }})</mdb-badge>
+              <mdb-badge color="cyan" class="my-2 py-1 px-1 mx-2">{{ tag.key }}({{ tag.num }})</mdb-badge>
             </a>
           </h6>
         </mdb-card-body>
