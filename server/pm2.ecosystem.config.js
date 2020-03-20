@@ -4,6 +4,7 @@ module.exports = {
       name: "innovationRoad",
       script: "./server/index.js",
       watch: true,
+      ignore_watch : [ "../logs", "../node_modules","../.git", "../sessions","../sessions/*", "../private/files/**/*", "../private/imgs/**/*" ],
       env_development: {
         // "PORT": 3030,
         "NODE_ENV": "development",

@@ -27,7 +27,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PaginationComponent } from './pagination/pagination.component';
 import { HtmlFormatPipe } from '../pipe/html-format.pipe';
 import { RouterModule } from '@angular/router';
-import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
   imports: [
@@ -54,13 +53,7 @@ import { AdsenseModule } from 'ng2-adsense';
     FlexLayoutModule,
     MatCheckboxModule,
     RouterModule,
-    MDBBootstrapModule.forRoot(),
-    AdsenseModule.forRoot({
-      adClient: 'ca-pub-4838746167999749',
-      adSlot: 9560442788,
-      layout: "in-article",
-      adFormat: "fluid",
-    }),
+    MDBBootstrapModule.forRoot()
   ],
   exports: [
     MatToolbarModule,
@@ -86,8 +79,7 @@ import { AdsenseModule } from 'ng2-adsense';
     MatCheckboxModule,
     MDBBootstrapModule,
     PaginationComponent,
-    HtmlFormatPipe,
-    AdsenseModule
+    HtmlFormatPipe
   ],
   declarations: [HtmlFormatPipe, PaginationComponent]
 })
