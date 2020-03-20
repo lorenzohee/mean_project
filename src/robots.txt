@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://innovationroad.site/sitemap.xml
