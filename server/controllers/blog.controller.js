@@ -45,12 +45,12 @@ async function index (obj) {
     delete obj.count
     return await Blog.find(obj).countDocuments();
   } else {
-    return await Blog.find(obj).sort({ '_id': -1 }).skip((page - 1) * pageNum).limit(pageNum);
+    return await Blog.find(obj).sort({ 'createdAt': -1 }).skip((page - 1) * pageNum).limit(pageNum);
   }
 }
 
 async function count (obj) {
-  return await Blog.find().sort({ '_id': -1 }).countDocuments();
+  return await Blog.find().sort({ 'createdAt': -1 }).countDocuments();
 }
 
 async function detail (id) {
@@ -67,7 +67,7 @@ async function destroy (id) {
 
 async function getRelativeBlogs (id, tag) {
   let queryParam = { "tags": { $all: [tag] }, "_id": { $ne: id } }
-  return await Blog.find(queryParam).sort({ '_id': -1 }).limit(3);
+  return await Blog.find(queryParam).sort({ 'createdAt': -1 }).limit(3);
 }
 
 async function tagCloud () {
