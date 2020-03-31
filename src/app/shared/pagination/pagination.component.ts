@@ -48,7 +48,7 @@ export class PaginationComponent implements OnInit {
       let url_params = url_array[1].split('&');
       url_params.forEach(element => {
         let tmp = element.split('=');
-        params[tmp[0]] = tmp[1];
+        params[tmp[0]] = decodeURI(tmp[1]);
       });
     }
     params['page'] = index

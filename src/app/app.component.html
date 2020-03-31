@@ -2,3 +2,96 @@
 <div class="wrapper-app">
   <router-outlet></router-outlet>
 </div>
+<!-- Footer -->
+<footer class="page-footer font-small unique-color-dark pt-4">
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">关于本网站</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>创新驿路是为您提供最新创新方法，创新事务的网站，为解决企业及个人的创新问题提供思路及解决方案。</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">菜单</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a [routerLink]="['/method',{blogType:'innovationMethod'}]">创新方法论</a>
+        </p>
+        <p>
+          <a [routerLink]="['/tech',{blogType:'innovationTech'}]">创新技术</a>
+        </p>
+        <p>
+          <a [routerLink]="['/things',{blogType:'innovationThing'}]">创新好物</a>
+        </p>
+        <p>
+          <a [routerLink]="['/things',{blogType:'news'}]">创新资讯</a>
+        </p>
+        <p>
+          <a [routerLink]="['/about']">联系我</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">友情链接</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="https://book.innovationroad.site" target="_blank">创新书店</a>
+        </p>
+        <p>
+          <a href="https://www.freshconsulting.com" target="_blank">Fresh</a>
+        </p>
+        <p>
+          <a href="https://www.lead-innovation.com" target="_blank">Lead</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">联系信息</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fas fa-map-signs mr-2"></i> 山东青岛， 中国
+        </p>
+        <p>
+          <i class="far fa-envelope mr-2"></i> yongqinghee@gmail.com
+        </p>
+        <p>
+          <i class="fab fa-weibo"></i>
+          <mat-icon fas icon="weibo" class="mr-3"></mat-icon> 爱打架的狐狸
+        </p>
+        <p>
+          <i class="fab fa-weixin mr-2"></i> 凉茶
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+  </div>
+  <!-- Footer Links -->
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="/auth/login"> 创新驿路</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
