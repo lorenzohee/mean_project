@@ -1,12 +1,11 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination pg-blue justify-content-center" *ngIf="_num>1">
-    <li class="page-item" style="font-size: 0.9rem; padding: 5px 20px;">总计{{ total }}条，第{{ icur }}/{{ _num }}页</li>
     <li class="page-item {{ (icur == 1 ) ? 'disabled' : '' }}"><a class="page-link" mdbWavesEffect
-        [routerLink]="getPgUrl(1)">First</a></li>
+        [routerLink]="getPgUrl(1)">第一页</a></li>
     <li class="page-item {{ (pageList[0] == 1 ) ? 'disabled' : '' }}">
       <a class="page-link" aria-label="Previous" mdbWavesEffect (click)="pageListToAbove()">
         <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">前一页</span>
       </a>
     </li>
     <li class="page-item {{ page == icur ? 'active' : ''}}" *ngFor="let page of pageList">
@@ -16,10 +15,10 @@
       <a class="page-link {{ (pageList[pageList.length-1] == _num ) ? 'disabled' : '' }}" aria-label="Next"
         mdbWavesEffect (click)="pageListToNext()">
         <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">下一页</span>
       </a>
     </li>
     <li class="page-item {{ (icur == _num ) ? 'disabled' : '' }}"><a class="page-link" mdbWavesEffect
-        [routerLink]="getPgUrl(_num)">Last</a></li>
+        [routerLink]="getPgUrl(_num)">最后</a></li>
   </ul>
 </nav>
